@@ -70,20 +70,105 @@
   }
 
   @media (max-width: 768px) {
+    /* Remove side padding on container */
+    body {
+      overflow-x: hidden;
+    }
+    
+    /* Navigation fixes */
+    nav {
+      padding: 1rem !important;
+      flex-wrap: wrap !important;
+      gap: 0.5rem !important;
+    }
+    
+    /* Text sizing */
+    h1 {
+      font-size: 2rem !important;
+    }
+    
+    h2 {
+      font-size: 1.5rem !important;
+    }
+    
+    h3 {
+      font-size: 1.2rem !important;
+    }
+    
+    /* Hero section */
+    #hero {
+      flex-direction: column !important;
+      text-align: center !important;
+      padding: 2rem 1rem !important;
+    }
+    
+    #hero > div:first-child {
+      order: 2 !important;
+    }
+    
+    #hero > div:last-child {
+      order: 1 !important;
+    }
+    
+    #hero img {
+      max-width: 250px !important;
+      margin: 0 auto 2rem auto !important;
+    }
+    
+    /* Section spacing */
+    section {
+      padding: 2rem 1rem !important;
+    }
+    
+    /* Experience/Skills/Education cards */
+    div[style*="gridTemplateColumns"] {
+      grid-template-columns: 1fr !important;
+      gap: 1.5rem !important;
+    }
+    
+    /* About page - CRITICAL FIXES */
     .photo-section {
-      gap: 0 !important;
+      margin: 0 -1rem !important;
       padding: 0 !important;
+      gap: 0 !important;
+      display: flex !important;
+      overflow-x: scroll !important;
+      scroll-snap-type: x mandatory !important;
     }
     
     .photo-card {
       min-width: 100vw !important;
+      width: 100vw !important;
+      flex-shrink: 0 !important;
       border-radius: 0 !important;
+      scroll-snap-align: start !important;
     }
     
     .photo-card img {
-      height: auto !important;
-      max-height: 400px !important;
+      width: 100vw !important;
+      height: 350px !important;
+      object-fit: cover !important;
+      object-position: center !important;
+    }
+    
+    /* Volunteer/Community section */
+    div[style*="padding: '2.5rem'"] {
+      padding: 1.5rem !important;
+    }
+    
+    /* Contact page */
+    div[style*="display: 'flex'"][style*="gap: '2rem'"] {
+      flex-direction: column !important;
+      gap: 1rem !important;
+    }
+    
+    /* Hide scroll constellation on mobile */
+    nav[style*="position: 'fixed'"][style*="right"] {
+      display: none !important;
+    }
+    
+    /* Ensure sections stack properly */
+    section > div {
       width: 100% !important;
-      object-fit: scale-down !important;  /* Shows full image, scales down if too big */
     }
   }
