@@ -72,15 +72,18 @@
   @media (max-width: 768px) {
     .photo-section {
       gap: 0 !important;
+      padding: 0 !important;
     }
     
     .photo-card {
-      min-width: 80vw !important;
+      min-width: 100vw !important;
+      border-radius: 0 !important;
     }
     
     .photo-card img {
       height: auto !important;
-      max-height: 300px !important;
-      object-fit: contain !important;
+      max-height: 400px !important;
+      width: 100% !important;
+      object-fit: scale-down !important;  /* Shows full image, scales down if too big */
     }
   }
