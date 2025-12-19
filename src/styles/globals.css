@@ -68,3 +68,46 @@
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
   }
+
+  @media (max-width: 768px) {
+    /* Smaller text on mobile */
+    h1 {
+      font-size: 2rem !important;
+    }
+    
+    h2 {
+      font-size: 1.5rem !important;
+    }
+    
+    /* Smaller padding */
+    section {
+      padding: 3rem 0 !important;
+    }
+    
+    /* Fix hero section stacking */
+    #hero {
+      flex-direction: column !important;
+      padding: 3rem 0 !important;
+    }
+    
+    /* Smaller profile image */
+    #hero img {
+      max-width: 250px !important;
+    }
+    
+    /* Fix About page photos on mobile - ADD THESE */
+    div[style*="minWidth: '400px'"] {
+      min-width: 90vw !important;
+    }
+    
+    /* Make volunteer section padding smaller on mobile */
+    div[style*="padding: '2.5rem'"] {
+      padding: 1.5rem !important;
+    }
+    
+    /* Smaller navigation on mobile */
+    nav {
+      padding: 1rem !important;
+      gap: 0.5rem !important;
+    }
+  }

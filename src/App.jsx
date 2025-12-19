@@ -98,6 +98,8 @@ const styles = {
     background: 'rgba(16, 22, 31, 0.6)',
     backdropFilter: 'blur(12px)',
     WebkitBackdropFilter: 'blur(12px)',
+    flexWrap: 'wrap',
+    gap: '1rem', 
   },
   logo: {
     display: 'flex',
@@ -120,6 +122,7 @@ const styles = {
   navLinks: {
     display: 'flex',
     gap: '2.5rem',
+    flexWrap: 'wrap',
   },
   navLink: {
     color: 'var(--text-muted)',
