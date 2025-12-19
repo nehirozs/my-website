@@ -1,4 +1,4 @@
-import singingPhoto from '../assets/singing.PNG'
+import singingPhoto from '../assets/singing.png'
 import bshPhoto from '../assets/bshpic.jpg'
 import balletPhoto from '../assets/ballet.JPG'
 

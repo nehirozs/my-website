@@ -119,7 +119,6 @@ const styles = {
     fontFamily: 'Playfair Display, serif',
     marginBottom: '0.75rem',
     margin: 0,
-    marginBottom: '0.75rem',
   },
   contactText: {
     fontSize: '0.95rem',
