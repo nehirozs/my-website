@@ -212,9 +212,9 @@
       object-fit: contain !important;
     }
     
-    /* Skills - 4 columns, 3 rows */
+/* Skills - 4 rows, 3 columns */
     #skills > div {
-      grid-template-columns: repeat(4, 1fr) !important;
+      grid-template-columns: repeat(3, 1fr) !important; /* Changed from 4 to 3 */
       gap: 0.5rem !important;
     }
     
