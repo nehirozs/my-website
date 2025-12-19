@@ -93,18 +93,19 @@ const styles = {
     scrollbarColor: 'rgba(199, 163, 77, 0.3) var(--bg-main)',
   },
   photoCard: {
-    background: 'var(--bg-soft)',
     borderRadius: '14px',
     overflow: 'hidden',
-    minWidth: '400px',
+    minWidth: '400px',  // Changed back from '85vw'
     flexShrink: 0,
     position: 'relative',
+    // Removed: background: 'var(--bg-soft)',
   },
   photo: {
     width: '100%',
-    height: '500px',
-    objectFit: 'cover',
+    height: '500px',    // Changed back from 'auto'
+    objectFit: 'cover', // Changed back from 'contain'
     display: 'block',
+    // Removed: maxHeight: '60vh',
   },
   caption: {
     position: 'absolute',
