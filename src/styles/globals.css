@@ -116,9 +116,8 @@
     }
     
     .photo-card img {
-      height: auto !important;
-      max-height: 400px !important;
-      object-fit: contain !important;
-    }
+      height: 400px !important;
+      width: 100% !important;
+      object-fit: cover !important;
   
   }
