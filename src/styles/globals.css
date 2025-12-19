@@ -110,4 +110,14 @@
       padding: 1rem !important;
       gap: 0.5rem !important;
     }
+
+    .photo-card {
+      min-width: 90vw !important;
+    }
+    
+    .photo-card img {
+      height: 300px !important;
+      object-fit: cover !important;
+    }
+  
   }
