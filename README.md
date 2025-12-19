@@ -1,6 +1,6 @@
 # Nehir Özsunar - Personal Portfolio
 
-My personal portfolio website showcasing my work, experience, and projects.
+My personal portfolio website showcasing my work and experience.
 
 ## 🌐 Live Site
 [nehirozsunar.com](https://nehirozsunar.com)
