@@ -171,4 +171,62 @@
     section > div {
       width: 100% !important;
     }
+
+    #experience > div > div {
+      padding: 1rem !important;
+    }
+    
+    #experience h3 {
+      font-size: 1rem !important;
+    }
+    
+    #experience p {
+      font-size: 0.85rem !important;
+      margin: 0.25rem 0 !important;
+    }
+    
+    #experience ul {
+      font-size: 0.85rem !important;
+      line-height: 1.4 !important;
+    }
+    
+    /* Make Skills boxes smaller */
+    #skills > div > div {
+      padding: 1rem !important;
+      min-width: 120px !important;
+    }
+    
+    #skills img {
+      width: 50px !important;
+      height: 50px !important;
+    }
+    
+    #skills p {
+      font-size: 0.85rem !important;
+    }
+    
+    /* Education - 2 columns on mobile */
+    #education > div {
+      grid-template-columns: 1fr 1fr !important;
+      gap: 1rem !important;
+    }
+    
+    #education > div > div {
+      padding: 1rem !important;
+    }
+    
+    #education h3 {
+      font-size: 0.95rem !important;
+    }
+    
+    #education p,
+    #education ul {
+      font-size: 0.8rem !important;
+    }
+    
+    #education img {
+      width: 40px !important;
+      height: 40px !important;
+    }
+  
   }
