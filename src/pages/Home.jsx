@@ -28,7 +28,7 @@ export default function Home() {
         <div style={styles.heroContent}>
           <span style={styles.greeting}>Hello, I'm</span>
           <h1 style={styles.name} className="gold">Nehir Özsunar</h1>
-          <h2 style={styles.subtitle}>Computer Science at McGill University</h2>
+          <h2 style={styles.subtitle}>Computer Science student at McGill University</h2>
           <p style={styles.bio}>
             Third-year student · Expected graduation Fall 2026
           </p>
