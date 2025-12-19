@@ -11,11 +11,11 @@ export default function About() {
 
       <div style={styles.content}>
         <p style={styles.paragraph}>
-          I'm a third-year computer science student at McGill University. I enjoy working on technical problems and understanding how things are built.
+        I’m a third-year computer science student at McGill University, interested in how things are built and how our design choices shape the way people interact with them.
         </p>
         
         <p style={styles.paragraph}>
-          Outside of CS, I've trained professionally in classical ballet and music for many years. I enjoy spending time with these after school.
+        Outside of CS, I’ve trained professionally in classical ballet and music for many years, and I continue to spend time on them alongside my studies.
         </p>
       </div>
 
