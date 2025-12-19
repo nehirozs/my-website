@@ -70,54 +70,17 @@
   }
 
   @media (max-width: 768px) {
-    /* Smaller text on mobile */
-    h1 {
-      font-size: 2rem !important;
+    .photo-section {
+      gap: 0 !important;
     }
     
-    h2 {
-      font-size: 1.5rem !important;
-    }
-    
-    /* Smaller padding */
-    section {
-      padding: 3rem 0 !important;
-    }
-    
-    /* Fix hero section stacking */
-    #hero {
-      flex-direction: column !important;
-      padding: 3rem 0 !important;
-    }
-    
-    /* Smaller profile image */
-    #hero img {
-      max-width: 250px !important;
-    }
-    
-    /* Fix About page photos on mobile - ADD THESE */
-    div[style*="minWidth: '400px'"] {
-      min-width: 90vw !important;
-    }
-    
-    /* Make volunteer section padding smaller on mobile */
-    div[style*="padding: '2.5rem'"] {
-      padding: 1.5rem !important;
-    }
-    
-    /* Smaller navigation on mobile */
-    nav {
-      padding: 1rem !important;
-      gap: 0.5rem !important;
-    }
-
     .photo-card {
-      min-width: 90vw !important;
+      min-width: 80vw !important;
     }
     
     .photo-card img {
-      height: 400px !important;
-      width: 100% !important;
-      object-fit: cover !important;
-  
+      height: auto !important;
+      max-height: 300px !important;
+      object-fit: contain !important;
+    }
   }

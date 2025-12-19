@@ -18,8 +18,8 @@ export default function About() {
           Outside of CS, I've trained professionally in classical ballet and music for many years, and I continue to spend time on them alongside my studies.
         </p>
       </div>
-
-      <div style={styles.photoSection}>
+    
+      <div style={styles.photoSection} className="photo-section">
         <div style={styles.photoCard} className="photo-card">
           <img src={bshPhoto} alt="BSH Internship" style={styles.photo} />
         </div>
