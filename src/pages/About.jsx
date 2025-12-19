@@ -1,8 +1,19 @@
+import { useState } from 'react'
 import singingPhoto from '../assets/singing.png'
 import bshPhoto from '../assets/bshpic.jpg'
 import balletPhoto from '../assets/ballet.JPG'
 
 export default function About() {
+  const [activePhoto, setActivePhoto] = useState(0)
+  const photos = [bshPhoto, singingPhoto, balletPhoto]
+  
+  const handleScroll = (e) => {
+    const scrollLeft = e.target.scrollLeft
+    const cardWidth = e.target.offsetWidth
+    const index = Math.round(scrollLeft / cardWidth)
+    setActivePhoto(index)
+  }
+
   return (
     <div style={styles.container}>
       <div style={styles.header}>
@@ -19,7 +30,7 @@ export default function About() {
         </p>
       </div>
     
-      <div style={styles.photoSection} className="photo-section">
+      <div style={styles.photoSection} className="photo-section" onScroll={handleScroll}>
         <div style={styles.photoCard} className="photo-card">
           <img src={bshPhoto} alt="BSH Internship" style={styles.photo} />
         </div>
@@ -29,6 +40,27 @@ export default function About() {
         <div style={styles.photoCard} className="photo-card">
           <img src={balletPhoto} alt="Ballet" style={styles.photo} />
         </div>
+      </div>
+
+      {/* Pagination Dots */}
+      <div style={styles.paginationDots}>
+        {photos.map((_, index) => (
+          <button
+            key={index}
+            style={{
+              ...styles.dot,
+              ...(activePhoto === index ? styles.dotActive : {}),
+            }}
+            onClick={() => {
+              const section = document.querySelector('.photo-section')
+              section.scrollTo({
+                left: section.offsetWidth * index,
+                behavior: 'smooth'
+              })
+            }}
+            aria-label={`Go to photo ${index + 1}`}
+          />
+        ))}
       </div>
 
       {/* Volunteer Section */}
@@ -118,6 +150,29 @@ const styles = {
     padding: '0.5rem 1rem',
     borderRadius: '4px',
     backdropFilter: 'blur(8px)',
+  },
+  paginationDots: {
+    display: 'flex',
+    justifyContent: 'center',
+    gap: '0.75rem',
+    marginTop: '1.5rem',
+    marginBottom: '2rem',
+  },
+  dot: {
+    width: '10px',
+    height: '10px',
+    borderRadius: '50%',
+    border: 'none',
+    background: 'rgba(199, 163, 77, 0.25)',
+    cursor: 'pointer',
+    padding: 0,
+    transition: 'all 0.3s ease',
+  },
+  dotActive: {
+    background: 'var(--gold)',
+    width: '12px',
+    height: '12px',
+    boxShadow: '0 0 12px rgba(199, 163, 77, 0.6)',
   },
   volunteerSection: {
     marginTop: '5rem',
