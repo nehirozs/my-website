@@ -125,32 +125,32 @@ export default function Home() {
         </div>
 
         <div style={styles.additionalEducation}>
-          <div style={styles.additionalEducationItem}>
-            <div style={styles.additionalSchoolRow}>
-              <img src={mimarSinanLogo} alt="Mimar Sinan Fine Arts University" style={styles.additionalSchoolLogo} />
-              <h4 style={styles.additionalSchool}>Mimar Sinan Fine Arts University</h4>
-            </div>
-            <div style={styles.additionalPeriodWrapper}>
-              <span style={styles.additionalPeriod}>2020 - 2022</span>
-            </div>
-            <p style={styles.additionalDetail}>
-              Conservatory program, part time enrollment during high school
-            </p>
+        <div style={styles.additionalEducationItem}>
+          <div style={styles.additionalSchoolRow}>
+            <img src={robertCollegeLogo} alt="Robert College of Istanbul" style={styles.additionalSchoolLogo} />
+            <h4 style={styles.additionalSchool}>Robert College of Istanbul</h4>
           </div>
-
-          <div style={styles.additionalEducationItem}>
-            <div style={styles.additionalSchoolRow}>
-              <img src={robertCollegeLogo} alt="Robert College of Istanbul" style={styles.additionalSchoolLogo} />
-              <h4 style={styles.additionalSchool}>Robert College of Istanbul</h4>
-            </div>
-            <div style={styles.additionalPeriodWrapper}>
-              <span style={styles.additionalPeriod}>2018 - 2023</span>
-            </div>
-            <p style={styles.additionalDetail}>
-              High School Diploma
-            </p>
+          <div style={styles.additionalPeriodWrapper}>
+            <span style={styles.additionalPeriod}>2018 - 2023</span>
           </div>
+          <p style={styles.additionalDetail}>
+            High School Diploma
+          </p>
         </div>
+
+        <div style={styles.additionalEducationItem}>
+          <div style={styles.additionalSchoolRow}>
+            <img src={mimarSinanLogo} alt="Mimar Sinan Fine Arts University" style={styles.additionalSchoolLogo} />
+            <h4 style={styles.additionalSchool}>Mimar Sinan Fine Arts University</h4>
+          </div>
+          <div style={styles.additionalPeriodWrapper}>
+            <span style={styles.additionalPeriod}>2020 - 2022</span>
+          </div>
+          <p style={styles.additionalDetail}>
+            Conservatory program, part time enrollment during high school
+          </p>
+        </div>
+      </div>
       </section>
 
       <ScrollConstellation />
