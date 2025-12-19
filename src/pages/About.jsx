@@ -20,16 +20,16 @@ export default function About() {
       </div>
 
       <div style={styles.photoSection}>
-        <div style={styles.photoCard}>
-            <img src={bshPhoto} alt="BSH Internship" style={styles.photo} />
+        <div style={styles.photoCard} className="photo-card">
+          <img src={bshPhoto} alt="BSH Internship" style={styles.photo} />
         </div>
-        <div style={styles.photoCard}>
-            <img src={singingPhoto} alt="Performance" style={styles.photo} />
+        <div style={styles.photoCard} className="photo-card">
+          <img src={singingPhoto} alt="Performance" style={styles.photo} />
         </div>
-        <div style={styles.photoCard}>
-            <img src={balletPhoto} alt="Ballet" style={styles.photo} />
+        <div style={styles.photoCard} className="photo-card">
+          <img src={balletPhoto} alt="Ballet" style={styles.photo} />
         </div>
-        </div>
+      </div>
 
       {/* Volunteer Section */}
       <div style={styles.volunteerSection}>
@@ -95,17 +95,15 @@ const styles = {
   photoCard: {
     borderRadius: '14px',
     overflow: 'hidden',
-    minWidth: '400px',  // Changed back from '85vw'
+    minWidth: '400px',
     flexShrink: 0,
     position: 'relative',
-    // Removed: background: 'var(--bg-soft)',
   },
   photo: {
     width: '100%',
-    height: '500px',    // Changed back from 'auto'
-    objectFit: 'cover', // Changed back from 'contain'
+    height: '500px',
+    objectFit: 'cover',
     display: 'block',
-    // Removed: maxHeight: '60vh',
   },
   caption: {
     position: 'absolute',
