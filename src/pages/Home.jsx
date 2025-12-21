@@ -82,7 +82,7 @@ export default function Home() {
           {[
             { name: 'Python', logo: pythonLogo },
             { name: 'Java', logo: javaLogo },
-            { name: 'C', logo: cLogo },
+            { name: 'C#', logo: cLogo },
             { name: 'OCaml', logo: ocamlLogo },
             { name: 'Bash', logo: bashLogo },
             { name: 'MIPS', logo: mipsLogo },
@@ -250,11 +250,12 @@ const styles = {
     width: '200px',
     height: '200px',
     objectFit: 'contain',
-    marginTop: '-3rem',
+    marginTop: '0rem',
     marginBottom: '0rem',
     borderRadius: '8px',
   },
-  */
+*/
+
   expRole: {
     fontSize: '1.15rem',
     marginBottom: '0.5rem',
