@@ -48,30 +48,30 @@ export default function Home() {
         <h2 style={styles.sectionTitle} className="section-title gold">Experience</h2>
         
         <div style={styles.experienceGrid}>
-          <div style={styles.experienceCard}>
-            <img src={bshLogo} alt="BSH Hausgeräte" style={styles.expLogoBSH} />
-            <h3 style={styles.expRole}>Robotics Automation Intern</h3>
-            <p style={styles.expCompany}>BSH Hausgeräte</p>
-            <p style={styles.expPeriod}>Summer 2024</p>
-          </div>
+  <div style={styles.experienceCard}>
+    <img src={threeageLogo} alt="3age" style={styles.expLogo} />
+    <h3 style={styles.expRole}>AI & Software Development Intern</h3>
+    <p style={styles.expCompany}>3age</p>
+    <div style={styles.expPeriodRow}>
+      <span style={styles.expPeriod}>Current</span>
+      <span style={styles.expCurrentBadge}>Active</span>
+    </div>
+  </div>
 
-          <div style={styles.experienceCard}>
-            <img src={threeageLogo} alt="3age" style={styles.expLogo} />
-            <h3 style={styles.expRole}>AI & Software Development Intern</h3>
-            <p style={styles.expCompany}>3age</p>
-            <div style={styles.expPeriodRow}>
-              <span style={styles.expPeriod}>Current</span>
-              <span style={styles.expCurrentBadge}>Active</span>
-            </div>
-          </div>
+  <div style={styles.experienceCard}>
+    <img src={bshLogo} alt="BSH Hausgeräte" style={styles.expLogo} />
+    <h3 style={styles.expRole}>Robotics Automation Intern</h3>
+    <p style={styles.expCompany}>BSH Hausgeräte</p>
+    <p style={styles.expPeriod}>Summer 2024</p>
+  </div>
 
-          <div style={styles.experienceCard}>
-            <img src={gameCircleLogo} alt="The Game Circle" style={styles.expLogo} />
-            <h3 style={styles.expRole}>Game Development Intern</h3>
-            <p style={styles.expCompany}>The Game Circle</p>
-            <p style={styles.expPeriod}>2022</p>
-          </div>
-        </div>
+  <div style={styles.experienceCard}>
+    <img src={gameCircleLogo} alt="The Game Circle" style={styles.expLogo} />
+    <h3 style={styles.expRole}>Game Development Intern</h3>
+    <p style={styles.expCompany}>The Game Circle</p>
+    <p style={styles.expPeriod}>2022</p>
+  </div>
+</div>
       </section>
 
       {/* Skills Section */}
@@ -244,6 +244,8 @@ const styles = {
     marginBottom: '1.5rem',
     borderRadius: '8px',
   },
+  
+  /*
   expLogoBSH: {
     width: '200px',
     height: '200px',
@@ -252,6 +254,7 @@ const styles = {
     marginBottom: '0rem',
     borderRadius: '8px',
   },
+  */
   expRole: {
     fontSize: '1.15rem',
     marginBottom: '0.5rem',
