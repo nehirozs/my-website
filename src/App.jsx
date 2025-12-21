@@ -2,84 +2,7 @@ import { Link, Routes, Route, useLocation } from 'react-router-dom'
 import Home from './pages/Home'
 import About from './pages/About'
 import Contact from './pages/Contact'
-
-export default function App() {
-  const location = useLocation();
-  
-  return (
-    <div style={styles.container}>
-      <nav style={styles.nav}>
-        <Link to="/" style={styles.logo}>
-          <span style={styles.logoIcon}>★</span>
-          <span style={styles.logoText}>Nehir Özsunar</span>
-        </Link>
-        
-        <div style={styles.navLinks}>
-          <Link 
-            to="/" 
-            style={{
-              ...styles.navLink,
-              ...(location.pathname === '/' ? styles.navLinkActive : {})
-            }}
-          >
-            Home
-          </Link>
-          <Link 
-            to="/about" 
-            style={{
-              ...styles.navLink,
-              ...(location.pathname === '/about' ? styles.navLinkActive : {})
-            }}
-          >
-            About
-          </Link>
-          <Link 
-            to="/contact" 
-            style={{
-              ...styles.navLink,
-              ...(location.pathname === '/contact' ? styles.navLinkActive : {})
-            }}
-          >
-            Contact
-          </Link>
-        </div>
-      </nav>
-
-      <main style={styles.main}>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
-        </Routes>
-      </main>
-      
-      <footer style={styles.footer}>
-        <div style={styles.footerContent}>
-          <a 
-            href="https://github.com/nehirozs" 
-            style={styles.footerLink}
-          >
-            GitHub
-          </a>
-          <span style={styles.footerDivider}>•</span>
-          <a 
-            href="https://linkedin.com/in/nehirozsunar" 
-            style={styles.footerLink}
-          >
-            LinkedIn
-          </a>
-          <span style={styles.footerDivider}>•</span>
-          <a 
-            href="mailto:nehir.ozsunar@mail.mcgill.ca" 
-            style={styles.footerLink}
-          >
-            Email
-          </a>
-        </div>
-      </footer>
-    </div>
-  )
-}
+import ScrollToTop from './components/ScrollToTop';
 
 const styles = {
   container: {
@@ -155,5 +78,92 @@ const styles = {
     gap: '1.5rem',
     fontSize: '0.85rem',
   },
-
+  footerLink: {
+    color: 'var(--text-muted)',
+    textDecoration: 'none',
+    transition: 'color 0.2s ease',
+  },
+  footerDivider: {
+    color: 'var(--text-muted)',
+    opacity: 0.3,
+  },
 };
+export default function App() {
+  const location = useLocation();
+  
+  return (
+    <div style={styles.container}>
+      <ScrollToTop />  {}
+      
+      <nav style={styles.nav}>
+        <Link to="/" style={styles.logo}>
+          <span style={styles.logoIcon}>★</span>
+          <span style={styles.logoText}>Nehir Özsunar</span>
+        </Link>
+        
+        <div style={styles.navLinks}>
+          <Link 
+            to="/" 
+            style={{
+              ...styles.navLink,
+              ...(location.pathname === '/' ? styles.navLinkActive : {})
+            }}
+          >
+            Home
+          </Link>
+          <Link 
+            to="/about" 
+            style={{
+              ...styles.navLink,
+              ...(location.pathname === '/about' ? styles.navLinkActive : {})
+            }}
+          >
+            About
+          </Link>
+          <Link 
+            to="/contact" 
+            style={{
+              ...styles.navLink,
+              ...(location.pathname === '/contact' ? styles.navLinkActive : {})
+            }}
+          >
+            Contact
+          </Link>
+        </div>
+      </nav>
+
+      <main style={styles.main}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+        </Routes>
+      </main>
+      
+      <footer style={styles.footer}>
+        <div style={styles.footerContent}>
+          <a 
+            href="https://github.com/nehirozs" 
+            style={styles.footerLink}
+          >
+            GitHub
+          </a>
+          <span style={styles.footerDivider}>•</span>
+          <a 
+            href="https://linkedin.com/in/nehirozsunar" 
+            style={styles.footerLink}
+          >
+            LinkedIn
+          </a>
+          <span style={styles.footerDivider}>•</span>
+          <a 
+            href="mailto:nehir.ozsunar@mail.mcgill.ca" 
+            style={styles.footerLink}
+          >
+            Email
+          </a>
+        </div>
+      </footer>
+    </div>
+  )
+}
