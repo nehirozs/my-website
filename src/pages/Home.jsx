@@ -106,28 +106,31 @@ export default function Home() {
         <h2 style={styles.sectionTitle} className="section-title gold">Education</h2>
         
         <div style={styles.educationCard} className="education-card">
-        <div style={styles.educationHeader} className="education-header">
-          <img src={mcgillLogo} alt="McGill University" style={styles.schoolLogo} />
-          <div style={{flex: 1}}>
-            <h3 style={styles.degree}>McGill University</h3>
-            <span style={styles.educationPeriod} className="education-dates">August 2023 - December 2026 (expected)</span>
-          </div>
+  <div style={styles.educationHeader}>
+  <img src={mcgillLogo} alt="McGill University" style={styles.mcgillLogo} />
+  <div style={styles.educationHeaderText}>
+      <h3 style={styles.degree}>McGill University</h3>
+      <span style={styles.educationPeriod}>
+        August 2023 – December 2026 (expected)
+      </span>
+    </div>
+  </div>
+
+      <div style={styles.schoolRow} className="education-degree-row">
+        <p style={styles.school}>BSc in Computer Science</p>
+        <div style={styles.educationDetails}>
+          <span style={styles.educationBadge}>AI Concentration</span>
+          <span style={styles.educationBadge}>Minor in Economics</span>
         </div>
-        <div style={styles.schoolRow} className="education-degree-row">
-          <p style={styles.school}>BSc in Computer Science</p>
-          <div style={styles.educationDetails}>
-            <span style={styles.educationBadge}>AI Concentration</span>
-            <span style={styles.educationBadge}>Minor in Economics</span>
-          </div>
-        </div>
-        <p className="coursework-summary" style={styles.courseworkSummary}>
-          Relevant coursework in algorithms, systems, programming languages, and economics.
-        </p>
-        <p className="coursework-full" style={styles.courseworkFull}>
-          Currently in third year • Relevant coursework includes Algorithm Design, Algorithms and Data Structures, Programming Challenges, 
-          Programming Languages & Paradigms, Computer Systems, Circuit Design, Introduction to Digital Audio, Economics Statistics, Microeconomics, Macroeconomics.
-        </p>
       </div>
+      <p className="coursework-summary" style={styles.courseworkSummary}>
+        Relevant coursework in algorithms, systems, programming languages, and economics.
+      </p>
+      <p className="coursework-full" style={styles.courseworkFull}>
+        Third year • Relevant coursework includes Algorithm Design, Algorithms and Data Structures, Programming Challenges, 
+        Programming Languages & Paradigms, Computer Systems, Circuit Design, Introduction to Digital Audio, Economics Statistics, Microeconomics, Macroeconomics.
+      </p>
+    </div>
 
         <div style={styles.additionalEducation}>
         <div style={styles.additionalEducationItem}>
@@ -312,10 +315,12 @@ const styles = {
   },
   educationCard: {
     padding: '2.5rem',
+    paddingTop: '1rem',
     background: 'var(--bg-soft)',
     borderRadius: '14px',
     marginBottom: '2rem',
     position: 'relative',
+    textAlign: 'left',
   },
   schoolRow: {
     display: 'flex',
@@ -329,19 +334,27 @@ const styles = {
     objectFit: 'contain',
     borderRadius: '6px',
   },
+
+  mcgillLogo: {
+  width: '48px',
+  height: '48px',
+  objectFit: 'contain',
+  borderRadius: '6px',
+  marginLeft: '-2rem',
+},
+
   educationHeader: {
     display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'flex-start',
-    marginBottom: '0.75rem',
-    flexWrap: 'wrap',
-    gap: '1rem',
+    alignItems: 'center',
+    gap: '0.85rem',
+    textAlign: 'left',
+    flexWrap: 'nowrap',
   },
   degree: {
     fontSize: '1.4rem',
   },
   educationPeriod: {
-    fontSize: '0.85rem',
+    fontSize: '0.75rem',
   },
   school: {
     fontSize: '1.1rem',
@@ -352,13 +365,13 @@ const styles = {
   educationDetails: {
     display: 'flex',
     flexWrap: 'wrap',
-    gap: '0.75rem',
+    gap: '0.55rem',
   },
   educationBadge: {
     padding: '0.5rem 1rem',
     background: 'rgba(199, 163, 77, 0.1)',
     borderRadius: '6px',
-    fontSize: '0.8rem',
+    fontSize: '0.6rem',
     color: 'var(--gold)',
     fontWeight: 500,
   },

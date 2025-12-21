@@ -281,6 +281,24 @@ nav {
     white-space: nowrap !important;
   }
 
+  #education .education-degree-row {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+  }
+  
+  #education div[style*="flexWrap"] {
+    width: 100% !important;
+    justify-content: flex-start !important;
+    flex-wrap: wrap !important;
+    max-width: 100% !important;
+  }
+  
+  #education div[style*="flexWrap"] span {
+    font-size: 0.55rem !important;
+    padding: 0.25rem 0.5rem !important;
+    white-space: nowrap !important;
+  }
+
   /* Coursework - Show summary on mobile, hide full detail */
   .coursework-summary {
     display: block !important;
