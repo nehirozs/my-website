@@ -1,276 +1,294 @@
 /* GLOBAL RESETS & BASE STYLES */
 
-   * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  /* BACKGROUND */
-  
- body {
-    margin: 0;
-    background: linear-gradient(
-      180deg,
-      var(--bg-main) 0%,
-      #0b0d11 60%,
-      #0a0c10 100%
-    );
-    background-attachment: fixed;
-    color: var(--text-main);
-    font-family: var(--font-body);
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-  
-  #root {
-    min-height: 100vh;
-  }
-  
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-  a {
-    color: var(--gold);
-    text-decoration: none;
-    transition: color 0.3s ease;
+/* BACKGROUND */
+
+body {
+  margin: 0;
+  background: linear-gradient(
+    180deg,
+    var(--bg-main) 0%,
+    #0b0d11 60%,
+    #0a0c10 100%
+  );
+  background-attachment: fixed;
+  color: var(--text-main);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+
+a {
+  color: var(--gold);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--text-main);
+}
+
+::selection {
+  background: var(--gold);
+  color: var(--bg-main);
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-main);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(199, 163, 77, 0.3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(199, 163, 77, 0.5);
+}
+
+/* NAVIGATION */
+
+nav {
+  background: rgba(13, 15, 18, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+@media (max-width: 768px) {
+  body {
+    overflow-x: hidden;
   }
-  
-  a:hover {
-    color: var(--text-main);
+  #education .education-badges {
+    justify-content: flex-start !important;
+    width: 100% !important;
+    padding-left: 1rem; 
   }
+ 
   
-  ::selection {
-    background: var(--gold);
-    color: var(--bg-main);
-  }
-  
-  ::-webkit-scrollbar {
-    width: 8px;
-  }
-  
-  ::-webkit-scrollbar-track {
-    background: var(--bg-main);
-  }
-  
-  ::-webkit-scrollbar-thumb {
-    background: rgba(199, 163, 77, 0.3);
-    border-radius: 4px;
-  }
-  
-  ::-webkit-scrollbar-thumb:hover {
-    background: rgba(199, 163, 77, 0.5);
-  }
-  
-  /* NAVIGATION */
-  
+  /* Navigation fixes */
   nav {
-    background: rgba(13, 15, 18, 0.6);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    padding: 1rem !important;
+    flex-wrap: wrap !important;
+    gap: 0.5rem !important;
+  }
+  
+  /* Text sizing */
+  h1 {
+    font-size: 2rem !important;
+  }
+  
+  h2 {
+    font-size: 1.5rem !important;
+  }
+  
+  h3 {
+    font-size: 1.2rem !important;
+  }
+  
+  /* Hero section */
+  #hero {
+    flex-direction: column !important;
+    text-align: center !important;
+    padding: 2rem 1rem !important;
+  }
+  
+  #hero > div:first-child {
+    order: 2 !important;
+  }
+  
+  #hero > div:last-child {
+    order: 1 !important;
+  }
+  
+  #hero img {
+    max-width: 250px !important;
+    margin: 0 auto 2rem auto !important;
+  }
+  
+  /* Section spacing */
+  section {
+    padding: 2rem 1rem !important;
+  }
+  
+  /* Experience/Skills/Education cards */
+  div[style*="gridTemplateColumns"] {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+  }
+  
+  /* About page - CRITICAL FIXES */
+  .photo-section {
+    margin: 0 -1rem !important;
+    padding: 0 !important;
+    gap: 0 !important;
+    display: flex !important;
+    overflow-x: scroll !important;
+    scroll-snap-type: x mandatory !important;
+  }
+  
+  .photo-card {
+    min-width: 100vw !important;
+    width: 100vw !important;
+    flex-shrink: 0 !important;
+    border-radius: 0 !important;
+    scroll-snap-align: start !important;
+  }
+  
+  .photo-card img {
+    width: 100vw !important;
+    height: 350px !important;
+    object-fit: cover !important;
+    object-position: center !important;
+  }
+  
+  /* Volunteer/Community section */
+  div[style*="padding: '2.5rem'"] {
+    padding: 1.5rem !important;
+  }
+  
+  /* Contact page */
+  div[style*="display: 'flex'"][style*="gap: '2rem'"] {
+    flex-direction: column !important;
+    gap: 1rem !important;
+  }
+  
+  /* Hide scroll constellation on mobile */
+  nav[style*="position: 'fixed'"][style*="right"] {
+    display: none !important;
+  }
+  
+  /* Ensure sections stack properly */
+  section > div {
+    width: 100% !important;
   }
 
-  @media (max-width: 768px) {
-    /* Remove side padding on container */
-    body {
-      overflow-x: hidden;
-    }
-    
-    /* Navigation fixes */
-    nav {
-      padding: 1rem !important;
-      flex-wrap: wrap !important;
-      gap: 0.5rem !important;
-    }
-    
-    /* Text sizing */
-    h1 {
-      font-size: 2rem !important;
-    }
-    
-    h2 {
-      font-size: 1.5rem !important;
-    }
-    
-    h3 {
-      font-size: 1.2rem !important;
-    }
-    
-    /* Hero section */
-    #hero {
-      flex-direction: column !important;
-      text-align: center !important;
-      padding: 2rem 1rem !important;
-    }
-    
-    #hero > div:first-child {
-      order: 2 !important;
-    }
-    
-    #hero > div:last-child {
-      order: 1 !important;
-    }
-    
-    #hero img {
-      max-width: 250px !important;
-      margin: 0 auto 2rem auto !important;
-    }
-    
-    /* Section spacing */
-    section {
-      padding: 2rem 1rem !important;
-    }
-    
-    /* Experience/Skills/Education cards */
-    div[style*="gridTemplateColumns"] {
-      grid-template-columns: 1fr !important;
-      gap: 1.5rem !important;
-    }
-    
-    /* About page - CRITICAL FIXES */
-    .photo-section {
-      margin: 0 -1rem !important;
-      padding: 0 !important;
-      gap: 0 !important;
-      display: flex !important;
-      overflow-x: scroll !important;
-      scroll-snap-type: x mandatory !important;
-    }
-    
-    .photo-card {
-      min-width: 100vw !important;
-      width: 100vw !important;
-      flex-shrink: 0 !important;
-      border-radius: 0 !important;
-      scroll-snap-align: start !important;
-    }
-    
-    .photo-card img {
-      width: 100vw !important;
-      height: 350px !important;
-      object-fit: cover !important;
-      object-position: center !important;
-    }
-    
-    /* Volunteer/Community section */
-    div[style*="padding: '2.5rem'"] {
-      padding: 1.5rem !important;
-    }
-    
-    /* Contact page */
-    div[style*="display: 'flex'"][style*="gap: '2rem'"] {
-      flex-direction: column !important;
-      gap: 1rem !important;
-    }
-    
-    /* Hide scroll constellation on mobile */
-    nav[style*="position: 'fixed'"][style*="right"] {
-      display: none !important;
-    }
-    
-    /* Ensure sections stack properly */
-    section > div {
-      width: 100% !important;
-    }
-
-    #experience > div {
-      grid-template-columns: 1fr !important;
-      gap: 0.75rem !important;
-    }
-    
-    #experience > div > div {
-      padding: 1rem !important;
-    }
-    #experience > div > div:first-child {
-      padding-top: 1rem !important;
-      padding-bottom: 1rem !important;
-    }
-    
-    #experience > div > div:first-child img {
-      margin: 1rem 0 !important;
-    }
-    
-    #experience h3 {
-      font-size: 0.95rem !important;
-      margin-bottom: 0.3rem !important;
-    }
-    
-    #experience p {
-      font-size: 0.8rem !important;
-      margin: 0.2rem 0 !important;
-    }
-    
-    #experience ul {
-      font-size: 0.8rem !important;
-      line-height: 1.4 !important;
-    }
-    
-    #experience img {
-      max-width: 120px !important;
-      max-height: 40px !important;
-      width: auto !important;
-      height: auto !important;
-      object-fit: contain !important;
-    }
-    
+  #experience > div {
+    grid-template-columns: 1fr !important;
+    gap: 0.75rem !important;
+  }
+  
+  #experience > div > div {
+    padding: 1rem !important;
+  }
+  #experience > div > div:first-child {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+  }
+  
+  #experience > div > div:first-child img {
+    margin: 1rem 0 !important;
+  }
+  
+  #experience h3 {
+    font-size: 0.95rem !important;
+    margin-bottom: 0.3rem !important;
+  }
+  
+  #experience p {
+    font-size: 0.8rem !important;
+    margin: 0.2rem 0 !important;
+  }
+  
+  #experience ul {
+    font-size: 0.8rem !important;
+    line-height: 1.4 !important;
+  }
+  
+  #experience img {
+    max-width: 120px !important;
+    max-height: 40px !important;
+    width: auto !important;
+    height: auto !important;
+    object-fit: contain !important;
+  }
+  
 /* Skills - 4 rows, 3 columns */
-    #skills > div {
-      grid-template-columns: repeat(3, 1fr) !important; /* Changed from 4 to 3 */
-      gap: 0.5rem !important;
-    }
-    
-    #skills > div > div {
-      padding: 0.5rem !important;
-    }
-    
-    #skills img {
-      width: 40px !important;
-      height: 40px !important;
-    }
-    
-    #skills p {
-      font-size: 0.7rem !important;
-      margin-top: 0.25rem !important;
-    }
-    
-    /* Education - Make McGill very compact */
-    #education > div {
-      grid-template-columns: 1fr !important;
-      gap: 0.75rem !important;
-    }
-    
-    #education > div > div {
-      padding: 0.75rem !important;
-    }
-    
-    #education h3 {
-      font-size: 0.9rem !important;
-      margin-bottom: 0.25rem !important;
-    }
-    
-    #education p {
-      font-size: 0.75rem !important;
-      margin: 0.15rem 0 !important;
-    }
-    
-    #education ul {
-      font-size: 0.7rem !important;
-      line-height: 1.3 !important;
-      padding-left: 1rem !important;
-      margin-top: 0.25rem !important;
-    }
-    
-    #education img {
-      width: 35px !important;
-      height: 35px !important;
-    }
-    
-    #education div[style*="display: 'flex'"] {
-      gap: 0.5rem !important;
-    }
-    
-    /* Make badges smaller */
-    #education span {
-      font-size: 0.65rem !important;
-      padding: 0.25rem 0.5rem !important;
-    }
+  #skills > div {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 0.5rem !important;
   }
+  
+  #skills > div > div {
+    padding: 0.5rem !important;
+  }
+  
+  #skills img {
+    width: 40px !important;
+    height: 40px !important;
+  }
+  
+  #skills p {
+    font-size: 0.7rem !important;
+    margin-top: 0.25rem !important;
+  }
+  
+  /* Education - Make McGill very compact */
+  #education > div {
+    grid-template-columns: 1fr !important;
+    gap: 0.75rem !important;
+  }
+  
+  #education > div > div {
+    padding: 0.75rem !important;
+  }
+  
+  #education h3 {
+    font-size: 0.9rem !important;
+    margin-bottom: 0.25rem !important;
+  }
+  
+  #education p {
+    font-size: 0.75rem !important;
+    margin: 0.15rem 0 !important;
+  }
+  
+  #education ul {
+    font-size: 0.7rem !important;
+    line-height: 1.3 !important;
+    padding-left: 1rem !important;
+    margin-top: 0.25rem !important;
+  }
+  
+  #education img {
+    width: 35px !important;
+    height: 35px !important;
+  }
+  
+  /* IMPORTANT: Exclude badges from this rule */
+  #education div[style*="display: 'flex'"]:not(.education-badges) {
+    gap: 0.5rem !important;
+  }
+  
+  
+  #education .education-badges span {
+    font-size: 0.55rem !important;
+    padding: 0.25rem 0.5rem !important;
+    white-space: nowrap !important;
+  }
+
+  /* Coursework - Show summary on mobile, hide full detail */
+  .coursework-summary {
+    display: block !important;
+    opacity: 0.85;
+  }
+  
+  .coursework-full {
+    display: none !important;
+  }
+
+}

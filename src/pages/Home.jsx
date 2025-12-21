@@ -105,24 +105,29 @@ export default function Home() {
       <section id="education" style={styles.educationSection}>
         <h2 style={styles.sectionTitle} className="section-title gold">Education</h2>
         
-        <div style={styles.educationCard}>
-          <div style={styles.educationHeader}>
-            <h3 style={styles.degree}>BSc in Computer Science</h3>
-            <span style={styles.educationPeriod}>August 2023 - December 2026 (expected)</span>
+        <div style={styles.educationCard} className="education-card">
+        <div style={styles.educationHeader} className="education-header">
+          <img src={mcgillLogo} alt="McGill University" style={styles.schoolLogo} />
+          <div style={{flex: 1}}>
+            <h3 style={styles.degree}>McGill University</h3>
+            <span style={styles.educationPeriod} className="education-dates">August 2023 - December 2026 (expected)</span>
           </div>
-          <div style={styles.schoolRow}>
-            <img src={mcgillLogo} alt="McGill University" style={styles.schoolLogo} />
-            <p style={styles.school}>McGill University</p>
-          </div>
+        </div>
+        <div style={styles.schoolRow} className="education-degree-row">
+          <p style={styles.school}>BSc in Computer Science</p>
           <div style={styles.educationDetails}>
             <span style={styles.educationBadge}>AI Concentration</span>
             <span style={styles.educationBadge}>Minor in Economics</span>
           </div>
-          <p style={styles.educationNote}>
-            Currently in third year • Relevant coursework includes Algorithm Design, Algorithms and Data Structures, Programming Challenges, 
-            Programming Languages & Paradigms, Computer Systems, Circuit Design, Introduction to Digital Audio, Economics Statistics, Microeconomics, Macroeconomics.
-          </p>
         </div>
+        <p className="coursework-summary" style={styles.courseworkSummary}>
+          Relevant coursework in algorithms, systems, programming languages, and economics.
+        </p>
+        <p className="coursework-full" style={styles.courseworkFull}>
+          Currently in third year • Relevant coursework includes Algorithm Design, Algorithms and Data Structures, Programming Challenges, 
+          Programming Languages & Paradigms, Computer Systems, Circuit Design, Introduction to Digital Audio, Economics Statistics, Microeconomics, Macroeconomics.
+        </p>
+      </div>
 
         <div style={styles.additionalEducation}>
         <div style={styles.additionalEducationItem}>
@@ -348,7 +353,6 @@ const styles = {
     display: 'flex',
     flexWrap: 'wrap',
     gap: '0.75rem',
-    marginBottom: '1.25rem',
   },
   educationBadge: {
     padding: '0.5rem 1rem',
@@ -363,6 +367,20 @@ const styles = {
     lineHeight: 1.65,
     marginTop: '1rem',
     maxWidth: '100%',
+  },
+  courseworkSummary: {
+    fontSize: '0.95rem',
+    lineHeight: 1.65,
+    marginTop: '1rem',
+    maxWidth: '100%',
+    display: 'none',
+  },
+  courseworkFull: {
+    fontSize: '0.95rem',
+    lineHeight: 1.65,
+    marginTop: '1rem',
+    maxWidth: '100%',
+    display: 'block',
   },
   additionalEducation: {
     display: 'grid',
