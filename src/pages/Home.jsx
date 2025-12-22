@@ -62,14 +62,14 @@ export default function Home() {
     <img src={bshLogo} alt="BSH Hausgeräte" style={styles.expLogo} />
     <h3 style={styles.expRole}>Robotics Automation Intern</h3>
     <p style={styles.expCompany}>BSH Hausgeräte</p>
-    <p style={styles.expPeriod}>Summer 2024</p>
+    <p style={styles.expPeriod}>July - August 2024</p>
   </div>
 
   <div style={styles.experienceCard}>
     <img src={gameCircleLogo} alt="The Game Circle" style={styles.expLogo} />
     <h3 style={styles.expRole}>Game Development Intern</h3>
     <p style={styles.expCompany}>The Game Circle</p>
-    <p style={styles.expPeriod}>2022</p>
+    <p style={styles.expPeriod}>June 2022</p>
   </div>
 </div>
       </section>
