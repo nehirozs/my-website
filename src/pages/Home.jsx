@@ -155,7 +155,7 @@ export default function Home() {
             <span style={styles.additionalPeriod}>2020 - 2022</span>
           </div>
           <p style={styles.additionalDetail}>
-            Conservatory program, part time enrollment during high school
+            Conservatory program, part time enrollment during high school - skipped 2 years
           </p>
         </div>
       </div>
