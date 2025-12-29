@@ -36,7 +36,7 @@ const styles = {
     gridTemplateColumns: '72px 1fr',
     gap: '1.25rem',
     padding: '2.5rem',
-    background: 'linear-gradient(135deg, var(--bg-soft) 0%, rgba(20, 23, 28, 0.95) 100%)',
+    background: 'linear-gradient(135deg, var(--bg-main) 0%, rgba(10, 12, 15, 0.98) 100%)',
     borderRadius: '16px',
     border: '1px solid rgba(199, 163, 77, 0.15)',
     boxShadow: '0 4px 16px rgba(0, 0, 0, 0.2), 0 2px 8px rgba(0, 0, 0, 0.1)',

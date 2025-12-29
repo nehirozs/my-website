@@ -4,6 +4,7 @@ import Home from './pages/Home'
 import About from './pages/About'
 import Contact from './pages/Contact'
 import ScrollToTop from './components/ScrollToTop'
+import Background from './components/Background'
 
 export default function App() {
   const location = useLocation();
@@ -19,6 +20,7 @@ export default function App() {
   
   return (
     <div style={styles.container}>
+      <Background />
       <ScrollToTop />
       <nav style={styles.nav}>
         <Link to="/" style={styles.logo}>
@@ -104,6 +106,8 @@ const styles = {
     minHeight: '100vh',
     display: 'flex',
     flexDirection: 'column',
+    position: 'relative',
+    zIndex: 1,
   },
   nav: {
     display: 'flex',
@@ -113,11 +117,12 @@ const styles = {
     position: 'sticky',
     top: 0,
     zIndex: 100,
-    background: 'rgba(16, 22, 31, 0.6)',
-    backdropFilter: 'blur(12px)',
-    WebkitBackdropFilter: 'blur(12px)',
+    background: 'rgba(13, 15, 18, 0.85)',
+    backdropFilter: 'blur(16px)',
+    WebkitBackdropFilter: 'blur(16px)',
     flexWrap: 'wrap',
-    gap: '1rem', 
+    gap: '1rem',
+    borderBottom: '1px solid rgba(199, 163, 77, 0.1)',
   },
   logo: {
     display: 'flex',
@@ -162,6 +167,8 @@ const styles = {
     width: '100%',
     margin: '0 auto',
     padding: '0 4rem',
+    position: 'relative',
+    zIndex: 1,
   },
   footer: {
     padding: '5rem 4rem 4rem',

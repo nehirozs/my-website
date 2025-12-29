@@ -171,7 +171,7 @@ const styles = {
     color: 'var(--text-main)',
   },
   volunteerCard: {
-    background: 'linear-gradient(135deg, var(--bg-soft) 0%, rgba(20, 23, 28, 0.95) 100%)',
+    background: 'linear-gradient(135deg, var(--bg-main) 0%, rgba(10, 12, 15, 0.98) 100%)',
     padding: '3rem',
     borderRadius: '16px',
     border: '1px solid rgba(199, 163, 77, 0.15)',
