@@ -18,23 +18,91 @@ import mcgillLogo from '../assets/mcgill.svg'
 import mimarSinanLogo from '../assets/msgsu.jpg'
 import robertCollegeLogo from '../assets/robert.png'
 import ScrollConstellation from '../components/ScrollConstellation'
+import EducationCard from '../components/EducationCard'
+import { useScrollAnimation } from '../hooks/useScrollAnimation'
 
 
 export default function Home() {
+  const [greetingRef, greetingVisible] = useScrollAnimation({ threshold: 0.1, delay: 0 });
+  const [nameRef, nameVisible] = useScrollAnimation({ threshold: 0.1, delay: 0.1 });
+  const [subtitleRef, subtitleVisible] = useScrollAnimation({ threshold: 0.1, delay: 0.2 });
+  const [bioRef, bioVisible] = useScrollAnimation({ threshold: 0.1, delay: 0.3 });
+  const [profileRef, profileVisible] = useScrollAnimation({ threshold: 0.1, delay: 0.2 });
+  const [expTitleRef, expTitleVisible] = useScrollAnimation({ threshold: 0.1 });
+  const [skillsTitleRef, skillsTitleVisible] = useScrollAnimation({ threshold: 0.1 });
+  const [eduTitleRef, eduTitleVisible] = useScrollAnimation({ threshold: 0.1 });
+  const educationData = [
+    {
+      logo: mcgillLogo,
+      schoolName: 'McGill University',
+      period: 'August 2023 - December 2026 (expected)',
+      description: 'BSc in Computer Science • AI Concentration • Minor in Economics • Currently in third year • Relevant coursework includes Algorithm Design, Algorithms and Data Structures, Programming Challenges, Programming Languages & Paradigms, Computer Systems, Circuit Design, Introduction to Digital Audio, Economics Statistics, Microeconomics, Macroeconomics'
+    },
+    {
+      logo: robertCollegeLogo,
+      schoolName: 'Robert College of Istanbul',
+      period: '2018 - 2023',
+      description: 'High School Diploma'
+    },
+    {
+      logo: mimarSinanLogo,
+      schoolName: 'Mimar Sinan Fine Arts University',
+      period: '2020 - 2022',
+      description: 'Conservatory program, part time enrollment during high school'
+    }
+  ];
+
   return (
     <div style={styles.container}>
       {/* Hero Section */}
       <section id="hero" style={styles.hero}>
         <div style={styles.heroContent}>
-          <span style={styles.greeting}>Hello, I'm</span>
-          <h1 style={styles.name} className="gold">Nehir Özsunar</h1>
-          <h2 style={styles.subtitle}>Computer Science student at McGill University</h2>
-          <p style={styles.bio}>
+          <span 
+            ref={greetingRef}
+            style={{
+              ...styles.greeting,
+              ...(greetingVisible ? styles.animateVisible : styles.animateHidden)
+            }}
+          >
+            Hello, I'm
+          </span>
+          <h1 
+            ref={nameRef}
+            style={{
+              ...styles.name,
+              ...(nameVisible ? styles.animateVisible : styles.animateHidden)
+            }}
+            className="gold"
+          >
+            Nehir Özsunar
+          </h1>
+          <h2 
+            ref={subtitleRef}
+            style={{
+              ...styles.subtitle,
+              ...(subtitleVisible ? styles.animateVisible : styles.animateHidden)
+            }}
+          >
+            Computer Science student at McGill University
+          </h2>
+          <p 
+            ref={bioRef}
+            style={{
+              ...styles.bio,
+              ...(bioVisible ? styles.animateVisible : styles.animateHidden)
+            }}
+          >
             Third-year student · Expected graduation Fall 2026
           </p>
         </div>
         
-        <div style={styles.profileImageWrapper}>
+        <div 
+          ref={profileRef}
+          style={{
+            ...styles.profileImageWrapper,
+            ...(profileVisible ? styles.animateVisible : styles.animateHidden)
+          }}
+        >
           <img 
             src={profilePic} 
             alt="Nehir Özsunar" 
@@ -45,38 +113,61 @@ export default function Home() {
 
       {/* Experience Section */}
       <section id="experience" style={styles.experienceSection}>
-        <h2 style={styles.sectionTitle} className="section-title gold">Experience</h2>
+        <h2 
+          ref={expTitleRef}
+          style={{
+            ...styles.sectionTitle,
+            ...(expTitleVisible ? styles.animateVisible : styles.animateHidden)
+          }}
+          className="section-title gold"
+        >
+          Experience
+        </h2>
         
         <div style={styles.experienceGrid}>
-          <div style={styles.experienceCard}>
-            <img src={bshLogo} alt="BSH Hausgeräte" style={styles.expLogoBSH} />
-            <h3 style={styles.expRole}>Robotics Automation Intern</h3>
-            <p style={styles.expCompany}>BSH Hausgeräte</p>
-            <p style={styles.expPeriod}>Summer 2024</p>
-          </div>
-
-          <div style={styles.experienceCard}>
-            <img src={threeageLogo} alt="3age" style={styles.expLogo} />
-            <h3 style={styles.expRole}>AI & Software Development Intern</h3>
-            <p style={styles.expCompany}>3age</p>
-            <div style={styles.expPeriodRow}>
-              <span style={styles.expPeriod}>Current</span>
-              <span style={styles.expCurrentBadge}>Active</span>
-            </div>
-          </div>
-
-          <div style={styles.experienceCard}>
-            <img src={gameCircleLogo} alt="The Game Circle" style={styles.expLogo} />
-            <h3 style={styles.expRole}>Game Development Intern</h3>
-            <p style={styles.expCompany}>The Game Circle</p>
-            <p style={styles.expPeriod}>2022</p>
-          </div>
+          <ExperienceCard 
+            logo={threeageLogo}
+            alt="3age"
+            logoStyle={styles.expLogo}
+            role="AI & Software Development Intern"
+            company="3age"
+            period="Current"
+            badge="Active"
+            index={0}
+          />
+          <ExperienceCard 
+            logo={bshLogo}
+            alt="BSH Hausgeräte"
+            logoStyle={styles.expLogo}
+            role="Robotics Automation Intern"
+            company="BSH Hausgeräte"
+            period="Summer 2024"
+            index={1}
+          />
+          <ExperienceCard 
+            logo={gameCircleLogo}
+            alt="The Game Circle"
+            logoStyle={styles.expLogo}
+            role="Game Development Intern"
+            company="The Game Circle"
+            period="2022"
+            index={2}
+          />
         </div>
       </section>
 
       {/* Skills Section */}
       <section id="skills" style={styles.skillsSection}>
-        <h2 style={styles.sectionTitle} className="section-title gold">Technical Skills</h2>
+        <h2 
+          ref={skillsTitleRef}
+          style={{
+            ...styles.sectionTitle,
+            ...(skillsTitleVisible ? styles.animateVisible : styles.animateHidden)
+          }}
+          className="section-title gold"
+        >
+          Technical Skills
+        </h2>
         
         <div style={styles.skillsGrid}>
           {[
@@ -92,65 +183,53 @@ export default function Home() {
             { name: 'Linux/Unix', logo: linuxLogo },
             { name: 'Logisim', logo: logisimLogo },
             { name: 'React', logo: reactLogo },
-          ].map((skill, index) => (
-            <div key={index} style={styles.skillBox}>
-              <img src={skill.logo} alt={skill.name} style={styles.skillLogo} />
-              <div style={styles.skillName}>{skill.name}</div>
-            </div>
-          ))}
+          ].map((skill, index) => {
+            const [skillRef, skillVisible] = useScrollAnimation({ 
+              threshold: 0.1, 
+              delay: index * 0.05 
+            });
+            return (
+              <div 
+                key={index} 
+                ref={skillRef}
+                style={{
+                  ...styles.skillBox,
+                  ...(skillVisible ? styles.animateVisible : styles.animateHidden)
+                }}
+              >
+                <img src={skill.logo} alt={skill.name} style={styles.skillLogo} />
+                <div style={styles.skillName}>{skill.name}</div>
+              </div>
+            );
+          })}
         </div>
       </section>
 
       {/* Education Section */}
       <section id="education" style={styles.educationSection}>
-        <h2 style={styles.sectionTitle} className="section-title gold">Education</h2>
+        <h2 
+          ref={eduTitleRef}
+          style={{
+            ...styles.sectionTitle,
+            ...(eduTitleVisible ? styles.animateVisible : styles.animateHidden)
+          }}
+          className="section-title gold"
+        >
+          Education
+        </h2>
         
-        <div style={styles.educationCard}>
-          <div style={styles.educationHeader}>
-            <h3 style={styles.degree}>BSc in Computer Science</h3>
-            <span style={styles.educationPeriod}>August 2023 - December 2026 (expected)</span>
-          </div>
-          <div style={styles.schoolRow}>
-            <img src={mcgillLogo} alt="McGill University" style={styles.schoolLogo} />
-            <p style={styles.school}>McGill University</p>
-          </div>
-          <div style={styles.educationDetails}>
-            <span style={styles.educationBadge}>AI Concentration</span>
-            <span style={styles.educationBadge}>Minor in Economics</span>
-          </div>
-          <p style={styles.educationNote}>
-            Currently in third year • Relevant coursework includes Algorithm Design, Algorithms and Data Structures, Programming Challenges, 
-            Programming Languages & Paradigms, Computer Systems, Circuit Design, Introduction to Digital Audio, Economics Statistics, Microeconomics, Macroeconomics.
-          </p>
+        <div style={styles.educationList}>
+          {educationData.map((education, index) => (
+            <EducationCard
+              key={index}
+              logo={education.logo}
+              schoolName={education.schoolName}
+              period={education.period}
+              description={education.description}
+              index={index}
+            />
+          ))}
         </div>
-
-        <div style={styles.additionalEducation}>
-        <div style={styles.additionalEducationItem}>
-          <div style={styles.additionalSchoolRow}>
-            <img src={robertCollegeLogo} alt="Robert College of Istanbul" style={styles.additionalSchoolLogo} />
-            <h4 style={styles.additionalSchool}>Robert College of Istanbul</h4>
-          </div>
-          <div style={styles.additionalPeriodWrapper}>
-            <span style={styles.additionalPeriod}>2018 - 2023</span>
-          </div>
-          <p style={styles.additionalDetail}>
-            High School Diploma
-          </p>
-        </div>
-
-        <div style={styles.additionalEducationItem}>
-          <div style={styles.additionalSchoolRow}>
-            <img src={mimarSinanLogo} alt="Mimar Sinan Fine Arts University" style={styles.additionalSchoolLogo} />
-            <h4 style={styles.additionalSchool}>Mimar Sinan Fine Arts University</h4>
-          </div>
-          <div style={styles.additionalPeriodWrapper}>
-            <span style={styles.additionalPeriod}>2020 - 2022</span>
-          </div>
-          <p style={styles.additionalDetail}>
-            Conservatory program, part time enrollment during high school
-          </p>
-        </div>
-      </div>
       </section>
 
       <ScrollConstellation />
@@ -160,16 +239,17 @@ export default function Home() {
 
 const styles = {
   container: {
-    paddingTop: '2rem',
-    paddingBottom: '4rem',
+    paddingTop: '3rem',
+    paddingBottom: '5rem',
   },
   
   // ===== HERO SECTION =====
   hero: {
     display: 'flex',
-    gap: '5rem',
+    gap: '6rem',
     alignItems: 'center',
-    padding: '7rem 0',
+    padding: '8rem 0',
+    marginBottom: '2rem',
   },
   heroContent: {
     maxWidth: '650px',
@@ -177,83 +257,101 @@ const styles = {
   },
   greeting: {
     color: 'var(--text-muted)',
-    fontSize: '0.9rem',
-    letterSpacing: '0.15em',
+    fontSize: '0.95rem',
+    letterSpacing: '0.18em',
     textTransform: 'uppercase',
     fontWeight: 300,
     display: 'block',
-    marginBottom: '1rem',
+    marginBottom: '1.25rem',
+    opacity: 0.9,
   },
   name: {
     marginBottom: '1.5rem',
     filter: 'drop-shadow(0 8px 24px rgba(199, 163, 77, 0.6)) drop-shadow(0 4px 12px rgba(199, 163, 77, 0.4))',
   },
   subtitle: {
-    fontSize: '1.6rem',
+    fontSize: '1.65rem',
     fontWeight: 400,
-    marginBottom: '2rem',
+    marginBottom: '2.25rem',
     fontFamily: 'var(--font-body)',
+    color: 'var(--text-main)',
+    letterSpacing: '-0.01em',
   },
   bio: {
-    fontSize: '1.05rem',
-    lineHeight: 1.6,
+    fontSize: '1.1rem',
+    lineHeight: 1.7,
+    color: 'var(--text-muted)',
+    letterSpacing: '0.01em',
   },
   profileImageWrapper: {
-    flex: '0 0 300px',
+    flex: '0 0 320px',
+    position: 'relative',
   },
   profileImage: {
     width: '100%',
     height: 'auto',
-    boxShadow: '0 8px 32px rgba(199, 163, 77, 0.4), 0 4px 16px rgba(199, 163, 77, 0.3), 0 0 60px rgba(199, 163, 77, 0.2)',
+    borderRadius: '16px',
+    boxShadow: '0 12px 48px rgba(199, 163, 77, 0.5), 0 6px 24px rgba(199, 163, 77, 0.4), 0 0 80px rgba(199, 163, 77, 0.25)',
+    border: '2px solid rgba(199, 163, 77, 0.2)',
+    transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
   },
   
   // EXPERIENCE SECTION
   experienceSection: {
-    padding: '7rem 0',
+    padding: '8rem 0',
   },
   sectionTitle: {
-    marginBottom: '3rem',
+    marginBottom: '4rem',
   },
   experienceGrid: {
     display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-    gap: '2.5rem',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+    gap: '3rem',
   },
   experienceCard: {
-    padding: '2.5rem 2rem',
-    background: 'var(--bg-soft)',
-    borderRadius: '14px',
+    padding: '3rem 2.5rem',
+    background: 'linear-gradient(135deg, var(--bg-soft) 0%, rgba(20, 23, 28, 0.95) 100%)',
+    borderRadius: '16px',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
     textAlign: 'center',
-    transition: 'transform 0.2s ease',
+    transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+    cursor: 'pointer',
+    border: '1px solid rgba(199, 163, 77, 0.15)',
+    boxShadow: '0 6px 24px rgba(0, 0, 0, 0.25), 0 2px 8px rgba(0, 0, 0, 0.15)',
+    position: 'relative',
+    overflow: 'hidden',
+    height: '100%',
   },
   expLogo: {
-    width: '120px',
-    height: '120px',
+    width: '150px',
+    height: '150px',
     objectFit: 'contain',
     marginBottom: '1.5rem',
-    borderRadius: '8px',
-  },
-  expLogoBSH: {
-    width: '200px',
-    height: '200px',
-    objectFit: 'contain',
-    marginTop: '-3rem',
-    marginBottom: '0rem',
-    borderRadius: '8px',
+    borderRadius: '12px',
+    padding: '0',
+    background: 'transparent',
+    border: '1px solid rgba(199, 163, 77, 0.1)',
+    transition: 'all 0.3s ease',
+    overflow: 'hidden',
   },
   expRole: {
-    fontSize: '1.15rem',
-    marginBottom: '0.5rem',
+    fontSize: '1.2rem',
+    marginBottom: '0.6rem',
+    fontWeight: 600,
+    color: 'var(--text-main)',
   },
   expCompany: {
-    fontSize: '0.95rem',
-    marginBottom: '0.5rem',
+    fontSize: '1rem',
+    marginBottom: '0.6rem',
+    color: 'var(--text-muted)',
+    fontWeight: 500,
   },
   expPeriod: {
-    fontSize: '0.85rem',
+    fontSize: '0.875rem',
+    color: 'var(--text-muted)',
+    letterSpacing: '0.02em',
   },
   expPeriodRow: {
     display: 'flex',
@@ -261,154 +359,103 @@ const styles = {
     gap: '0.75rem',
   },
   expCurrentBadge: {
-    padding: '0.25rem 0.75rem',
-    background: 'rgba(199, 163, 77, 0.15)',
-    borderRadius: '4px',
+    padding: '0.35rem 0.85rem',
+    background: 'linear-gradient(135deg, rgba(199, 163, 77, 0.2) 0%, rgba(199, 163, 77, 0.15) 100%)',
+    borderRadius: '6px',
     fontSize: '0.7rem',
     color: 'var(--gold)',
     fontWeight: 600,
-    letterSpacing: '0.05em',
+    letterSpacing: '0.08em',
     textTransform: 'uppercase',
+    border: '1px solid rgba(199, 163, 77, 0.3)',
+    boxShadow: '0 2px 8px rgba(199, 163, 77, 0.2)',
   },
   
   //  SKILLS SECTION 
   skillsSection: {
-    padding: '7rem 0',
+    padding: '8rem 0',
   },
   skillsGrid: {
     display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fill, minmax(110px, 1fr))',
-    gap: '1.25rem',
+    gridTemplateColumns: 'repeat(auto-fill, minmax(120px, 1fr))',
+    gap: '1.5rem',
   },
   skillBox: {
-    padding: '1.75rem 1rem',
-    background: 'var(--bg-soft)',
-    borderRadius: '14px',
+    padding: '2rem 1.25rem',
+    background: 'linear-gradient(135deg, var(--bg-soft) 0%, rgba(20, 23, 28, 0.95) 100%)',
+    borderRadius: '16px',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    gap: '0.75rem',
-    transition: 'transform 0.2s ease',
+    gap: '0.875rem',
+    transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+    cursor: 'pointer',
+    border: '1px solid rgba(199, 163, 77, 0.15)',
+    boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2), 0 2px 6px rgba(0, 0, 0, 0.1)',
+    position: 'relative',
   },
   skillLogo: {
-    width: '48px',
-    height: '48px',
+    width: '64px',
+    height: '64px',
     objectFit: 'contain',
+    transition: 'transform 0.3s ease',
+    filter: 'brightness(0.95)',
   },
   skillName: {
-    fontSize: '0.85rem',
+    fontSize: '0.875rem',
     fontWeight: 500,
     textAlign: 'center',
+    letterSpacing: '0.02em',
+    color: 'var(--text-main)',
   },
   
   // EDUCATION SECTION
   educationSection: {
-    padding: '7rem 0',
+    padding: '8rem 0',
   },
-  educationCard: {
-    padding: '2.5rem',
-    background: 'var(--bg-soft)',
-    borderRadius: '14px',
-    marginBottom: '2rem',
-    position: 'relative',
-  },
-  schoolRow: {
+  educationList: {
     display: 'flex',
-    alignItems: 'center',
-    gap: '1rem',
-    marginBottom: '1.25rem',
+    flexDirection: 'column',
+    gap: '4rem',
   },
-  schoolLogo: {
-    width: '48px',
-    height: '48px',
-    objectFit: 'contain',
-    borderRadius: '6px',
+  animateHidden: {
+    opacity: 0,
+    transform: 'translateY(25px)',
+    transition: 'opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1), transform 0.7s cubic-bezier(0.4, 0, 0.2, 1)',
   },
-  educationHeader: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'flex-start',
-    marginBottom: '0.75rem',
-    flexWrap: 'wrap',
-    gap: '1rem',
-  },
-  degree: {
-    fontSize: '1.4rem',
-  },
-  educationPeriod: {
-    fontSize: '0.85rem',
-  },
-  school: {
-    fontSize: '1.1rem',
-    margin: 0,
-    fontWeight: 600,
-    fontFamily: 'var(--font-display)',
-  },
-  educationDetails: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    gap: '0.75rem',
-    marginBottom: '1.25rem',
-  },
-  educationBadge: {
-    padding: '0.5rem 1rem',
-    background: 'rgba(199, 163, 77, 0.1)',
-    borderRadius: '6px',
-    fontSize: '0.8rem',
-    color: 'var(--gold)',
-    fontWeight: 500,
-  },
-  educationNote: {
-    fontSize: '0.95rem',
-    lineHeight: 1.65,
-    marginTop: '1rem',
-    maxWidth: '100%',
-  },
-  additionalEducation: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(2, 1fr)',
-    gap: '1.5rem',
-  },
-  additionalEducationItem: {
-    padding: '2rem',
-    background: 'var(--bg-soft)',
-    borderRadius: '14px',
-  },
-  additionalSchoolRow: {
-    display: 'flex',
-    alignItems: 'center',
-    gap: '0.75rem',
-    marginBottom: '0.75rem',
-  },
-  additionalSchoolLogo: {
-    width: '40px',
-    height: '40px',
-    objectFit: 'contain',
-    borderRadius: '6px',
-    flexShrink: 0,
-  },
-  additionalPeriodWrapper: {
-    marginBottom: '0.75rem',
-  },
-  additionalHeader: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginBottom: '0.75rem',
-    flexWrap: 'wrap',
-    gap: '0.5rem',
-  },
-  additionalSchool: {
-    fontSize: '1.1rem',
-    fontFamily: 'var(--font-display)',
-    fontWeight: 600,
-    margin: 0,
-  },
-  additionalPeriod: {
-    fontSize: '0.8rem',
-  },
-  additionalDetail: {
-    fontSize: '0.9rem',
-    lineHeight: 1.6,
+  animateVisible: {
+    opacity: 1,
+    transform: 'translateY(0)',
+    transition: 'opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1), transform 0.7s cubic-bezier(0.4, 0, 0.2, 1)',
   },
 };
+
+// Experience Card Component
+function ExperienceCard({ logo, alt, logoStyle, role, company, period, badge, index }) {
+  const [cardRef, cardVisible] = useScrollAnimation({ 
+    threshold: 0.1, 
+    delay: index * 0.1 
+  });
+  
+  return (
+    <div 
+      ref={cardRef}
+      style={{
+        ...styles.experienceCard,
+        ...(cardVisible ? styles.animateVisible : styles.animateHidden)
+      }}
+    >
+      <img src={logo} alt={alt} style={logoStyle} />
+      <h3 style={styles.expRole}>{role}</h3>
+      <p style={styles.expCompany}>{company}</p>
+      {badge ? (
+        <div style={styles.expPeriodRow}>
+          <span style={styles.expPeriod}>{period}</span>
+          <span style={styles.expCurrentBadge}>{badge}</span>
+        </div>
+      ) : (
+        <p style={styles.expPeriod}>{period}</p>
+      )}
+    </div>
+  );
+}

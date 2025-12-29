@@ -44,29 +44,15 @@
     color: var(--bg-main);
   }
   
-  ::-webkit-scrollbar {
-    width: 8px;
-  }
-  
-  ::-webkit-scrollbar-track {
-    background: var(--bg-main);
-  }
-  
-  ::-webkit-scrollbar-thumb {
-    background: rgba(199, 163, 77, 0.3);
-    border-radius: 4px;
-  }
-  
-  ::-webkit-scrollbar-thumb:hover {
-    background: rgba(199, 163, 77, 0.5);
-  }
   
   /* NAVIGATION */
   
   nav {
-    background: rgba(13, 15, 18, 0.6);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    background: rgba(13, 15, 18, 0.7);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(199, 163, 77, 0.1);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
   }
 
   @media (max-width: 768px) {
@@ -117,7 +103,11 @@
     
     /* Section spacing */
     section {
-      padding: 2rem 1rem !important;
+      padding: 3rem 1rem !important;
+    }
+    
+    section::after {
+      display: none !important;
     }
     
     /* Experience/Skills/Education cards */
@@ -167,10 +157,343 @@
       display: none !important;
     }
     
+    /* Improve mobile card spacing */
+    #experience > div,
+    #skills > div,
+    #education > div {
+      gap: 1.25rem !important;
+    }
+    
+    /* Better mobile typography */
+    h1 {
+      line-height: 1.15 !important;
+    }
+    
+    h2 {
+      line-height: 1.25 !important;
+    }
+    
+    /* Mobile footer */
+    footer {
+      padding: 3rem 1.5rem 2.5rem !important;
+    }
+    
+    footer > div {
+      flex-direction: column !important;
+      gap: 1rem !important;
+    }
+    
+    footer span {
+      display: none !important;
+    }
+    
     /* Ensure sections stack properly */
     section > div {
       width: 100% !important;
     }
+  }
+
+  /* HOVER EFFECTS & INTERACTIONS */
+  
+  /* Experience Cards - Subtle hover with smooth transitions */
+  @media (hover: hover) and (pointer: fine) {
+    #experience > div > div {
+      transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+                  box-shadow 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+                  border-color 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    #experience > div > div:hover {
+      transform: translateY(-4px) scale(1.02) !important;
+      box-shadow: 0 12px 48px rgba(199, 163, 77, 0.3), 0 6px 24px rgba(0, 0, 0, 0.3) !important;
+      border-color: rgba(199, 163, 77, 0.35) !important;
+    }
+    
+    #experience > div > div img {
+      transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+                  filter 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    #experience > div > div:hover img {
+      transform: scale(1.04) !important;
+      filter: brightness(1.08) !important;
+    }
+  }
+  
+  /* Skill Boxes - Subtle scale and lift */
+  @media (hover: hover) and (pointer: fine) {
+    #skills > div > div {
+      transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+                  box-shadow 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+                  border-color 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+                  background 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    #skills > div > div:hover {
+      transform: translateY(-4px) scale(1.03) !important;
+      box-shadow: 0 8px 24px rgba(199, 163, 77, 0.25), 0 4px 12px rgba(0, 0, 0, 0.2) !important;
+      border-color: rgba(199, 163, 77, 0.35) !important;
+      background: linear-gradient(135deg, rgba(20, 23, 28, 0.98) 0%, rgba(20, 23, 28, 0.95) 100%) !important;
+    }
+    
+    #skills > div > div img {
+      transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+                  filter 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    #skills > div > div:hover img {
+      transform: scale(1.08) rotate(1.5deg) !important;
+      filter: brightness(1.1) !important;
+    }
+  }
+  
+  /* Education Cards - Subtle lift */
+  @media (hover: hover) and (pointer: fine) {
+    #education > div > div {
+      transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+                  box-shadow 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+                  border-color 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    #education > div > div:hover {
+      transform: translateY(-3px) scale(1.01) !important;
+      box-shadow: 0 12px 48px rgba(199, 163, 77, 0.25), 0 6px 24px rgba(0, 0, 0, 0.3) !important;
+      border-color: rgba(199, 163, 77, 0.35) !important;
+    }
+  }
+  
+  /* Contact Cards - Subtle scale and lift */
+  @media (hover: hover) and (pointer: fine) {
+    .contact-card {
+      transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+                  box-shadow 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+                  border-color 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+                  background 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .contact-card:hover {
+      transform: translateY(-4px) scale(1.03) !important;
+      box-shadow: 0 8px 24px rgba(199, 163, 77, 0.25), 0 4px 12px rgba(0, 0, 0, 0.2) !important;
+      border-color: rgba(199, 163, 77, 0.35) !important;
+      background: linear-gradient(135deg, rgba(20, 23, 28, 0.98) 0%, rgba(20, 23, 28, 0.95) 100%) !important;
+    }
+    
+    .contact-card img {
+      transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+                  filter 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .contact-card:hover img {
+      transform: scale(1.08) rotate(1.5deg) !important;
+      filter: brightness(1.1) !important;
+    }
+  }
+  
+  /* Navigation Links - Enhanced underline animation */
+  nav a.nav-link {
+    position: relative;
+    transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  nav a.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--gold);
+    transition: width 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  nav a.nav-link:hover::after,
+  nav a.nav-link[style*="gold"]::after {
+    width: 100%;
+  }
+  
+  @media (hover: hover) and (pointer: fine) {
+    nav a:hover {
+      color: var(--gold) !important;
+      opacity: 1 !important;
+      transform: translateY(-1px) !important;
+    }
+    
+    /* Logo Hover - Subtle scale */
+    nav a[style*="logo"]:hover {
+      opacity: 0.9 !important;
+      transform: scale(1.02) !important;
+    }
+  }
+  
+  /* Footer Links - Subtle lift */
+  @media (hover: hover) and (pointer: fine) {
+    footer a {
+      transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                  transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    footer a:hover {
+      color: var(--gold) !important;
+      transform: translateY(-2px) !important;
+    }
+  }
+  
+  /* Photo Cards - Subtle scale and lift */
+  @media (hover: hover) and (pointer: fine) {
+    .photo-card {
+      transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+                  box-shadow 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+                  border-color 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .photo-card:hover {
+      transform: translateY(-3px) scale(1.02) !important;
+      box-shadow: 0 12px 48px rgba(199, 163, 77, 0.25), 0 6px 24px rgba(0, 0, 0, 0.35) !important;
+      border-color: rgba(199, 163, 77, 0.3) !important;
+    }
+  }
+  
+  /* Volunteer Card - Subtle lift */
+  @media (hover: hover) and (pointer: fine) {
+    div[style*="volunteerCard"] {
+      transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+                  box-shadow 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+                  border-color 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    div[style*="volunteerCard"]:hover {
+      transform: translateY(-3px) scale(1.01) !important;
+      box-shadow: 0 12px 48px rgba(199, 163, 77, 0.25), 0 6px 24px rgba(0, 0, 0, 0.3) !important;
+      border-color: rgba(199, 163, 77, 0.35) !important;
+    }
+  }
+  
+  /* Profile Image Hover - Subtle scale */
+  @media (hover: hover) and (pointer: fine) {
+    #hero img {
+      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                  box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    #hero img:hover {
+      transform: scale(1.02) !important;
+      box-shadow: 0 16px 64px rgba(199, 163, 77, 0.5), 0 8px 32px rgba(199, 163, 77, 0.4), 0 0 100px rgba(199, 163, 77, 0.25) !important;
+    }
+  }
+  
+  /* Focus States for Accessibility */
+  button:focus-visible,
+  a:focus-visible {
+    outline: 2px solid var(--gold) !important;
+    outline-offset: 4px !important;
+    border-radius: 4px !important;
+  }
+  
+  /* Smooth Scroll */
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 100px;
+  }
+  
+  /* Enhanced scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: var(--bg-main);
+    border-left: 1px solid rgba(199, 163, 77, 0.1);
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, rgba(199, 163, 77, 0.4) 0%, rgba(199, 163, 77, 0.3) 100%);
+    border-radius: 5px;
+    border: 2px solid var(--bg-main);
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, rgba(199, 163, 77, 0.6) 0%, rgba(199, 163, 77, 0.5) 100%);
+  }
+  
+  /* ANIMATIONS & KEYFRAMES */
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(25px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes fadeInScale {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  /* Scroll Animation Utility Classes */
+  .animate-on-scroll {
+    opacity: 0;
+    transform: translateY(25px);
+    transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .animate-on-scroll.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Page Transition */
+  .page-transition-enter {
+    opacity: 0;
+    animation: fadeIn 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+  
+  .page-transition-enter-active {
+    opacity: 1;
+  }
+  
+  /* Reduced Motion Support */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+    
+    .animate-on-scroll {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  
+  /* Smooth transitions for all interactive elements */
+  * {
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
 
     #experience > div {
       grid-template-columns: 1fr !important;
@@ -205,8 +528,8 @@
     }
     
     #experience img {
-      max-width: 120px !important;
-      max-height: 40px !important;
+      max-width: 140px !important;
+      max-height: 140px !important;
       width: auto !important;
       height: auto !important;
       object-fit: contain !important;
@@ -223,8 +546,8 @@
     }
     
     #skills img {
-      width: 40px !important;
-      height: 40px !important;
+      width: 52px !important;
+      height: 52px !important;
     }
     
     #skills p {
@@ -260,8 +583,8 @@
     }
     
     #education img {
-      width: 35px !important;
-      height: 35px !important;
+      width: 64px !important;
+      height: 64px !important;
     }
     
     #education div[style*="display: 'flex'"] {
@@ -273,4 +596,4 @@
       font-size: 0.65rem !important;
       padding: 0.25rem 0.5rem !important;
     }
-  }
+  
