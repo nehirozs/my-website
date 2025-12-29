@@ -1,73 +1,77 @@
-import { useState } from 'react'
 import singingPhoto from '../assets/singing.png'
 import bshPhoto from '../assets/bshpic.jpg'
 import balletPhoto from '../assets/ballet.JPG'
+import { useScrollAnimation } from '../hooks/useScrollAnimation'
 
 export default function About() {
-  const [activePhoto, setActivePhoto] = useState(0)
-  const photos = [bshPhoto, singingPhoto, balletPhoto]
+  const [titleRef, titleVisible] = useScrollAnimation({ threshold: 0.1 });
+  const [para1Ref, para1Visible] = useScrollAnimation({ threshold: 0.1, delay: 0.1 });
+  const [para2Ref, para2Visible] = useScrollAnimation({ threshold: 0.1, delay: 0.2 });
+  const [volunteerTitleRef, volunteerTitleVisible] = useScrollAnimation({ threshold: 0.1 });
+  const [volunteerCardRef, volunteerCardVisible] = useScrollAnimation({ threshold: 0.1, delay: 0.1 });
   
-  const handleScroll = (e) => {
-    const scrollLeft = e.target.scrollLeft
-    const cardWidth = e.target.offsetWidth
-    const index = Math.round(scrollLeft / cardWidth)
-    setActivePhoto(index)
-  }
-
   return (
     <div style={styles.container}>
       <div style={styles.header}>
-        <h1 style={styles.title} className="section-title gold">About</h1>
+        <h1 
+          ref={titleRef}
+          style={{
+            ...styles.title,
+            ...(titleVisible ? styles.animateVisible : styles.animateHidden)
+          }}
+          className="section-title gold"
+        >
+          About
+        </h1>
       </div>
 
       <div style={styles.content}>
-        <p style={styles.paragraph}>
+        <p 
+          ref={para1Ref}
+          style={{
+            ...styles.paragraph,
+            ...(para1Visible ? styles.animateVisible : styles.animateHidden)
+          }}
+        >
           I'm a third-year computer science student at McGill University, interested in how things are built and how our design choices shape the way people interact with them.
         </p>
         
-        <p style={styles.paragraph}>
+        <p 
+          ref={para2Ref}
+          style={{
+            ...styles.paragraph,
+            ...(para2Visible ? styles.animateVisible : styles.animateHidden)
+          }}
+        >
           Outside of CS, I've trained professionally in classical ballet and music for many years, and I continue to spend time on them alongside my studies.
         </p>
       </div>
     
-      <div style={styles.photoSection} className="photo-section" onScroll={handleScroll}>
-        <div style={styles.photoCard} className="photo-card">
-          <img src={bshPhoto} alt="BSH Internship" style={styles.photo} />
-        </div>
-        <div style={styles.photoCard} className="photo-card">
-          <img src={singingPhoto} alt="Performance" style={styles.photo} />
-        </div>
-        <div style={styles.photoCard} className="photo-card">
-          <img src={balletPhoto} alt="Ballet" style={styles.photo} />
-        </div>
-      </div>
-
-      {/* Pagination Dots */}
-      <div style={styles.paginationDots}>
-        {photos.map((_, index) => (
-          <button
-            key={index}
-            style={{
-              ...styles.dot,
-              ...(activePhoto === index ? styles.dotActive : {}),
-            }}
-            onClick={() => {
-              const section = document.querySelector('.photo-section')
-              section.scrollTo({
-                left: section.offsetWidth * index,
-                behavior: 'smooth'
-              })
-            }}
-            aria-label={`Go to photo ${index + 1}`}
-          />
-        ))}
+      <div style={styles.photoSection} className="photo-section">
+        <PhotoCard src={bshPhoto} alt="BSH Internship" index={0} />
+        <PhotoCard src={singingPhoto} alt="Performance" index={1} />
+        <PhotoCard src={balletPhoto} alt="Ballet" index={2} />
       </div>
 
       {/* Volunteer Section */}
       <div style={styles.volunteerSection}>
-        <h2 style={styles.volunteerTitle}>Community Engagement</h2>
+        <h2 
+          ref={volunteerTitleRef}
+          style={{
+            ...styles.volunteerTitle,
+            ...(volunteerTitleVisible ? styles.animateVisible : styles.animateHidden)
+          }}
+        >
+          Community Engagement
+        </h2>
         
-        <div style={styles.volunteerCard}>
+        <div 
+          ref={volunteerCardRef}
+          style={{
+            ...styles.volunteerCard,
+            ...(volunteerCardVisible ? styles.animateVisible : styles.animateHidden)
+          }}
+        >
           <div style={styles.volunteerHeader}>
             <h3 style={styles.projectName}>Robert College Community Involvement Projects (CIP)</h3>
             <span style={styles.volunteerPeriod}>2019 - 2021</span>
@@ -93,11 +97,11 @@ export default function About() {
 
 const styles = {
   container: {
-    paddingTop: '4rem',
-    paddingBottom: '6rem',
+    paddingTop: '5rem',
+    paddingBottom: '7rem',
   },
   header: {
-    marginBottom: '3rem',
+    marginBottom: '3.5rem',
   },
   title: {
     fontSize: 'clamp(3rem, 6vw, 4.5rem)',
@@ -106,30 +110,36 @@ const styles = {
   },
   content: {
     maxWidth: '100%',
-    marginBottom: '3rem',
+    marginBottom: '4rem',
   },
   paragraph: {
     fontSize: '1.15rem',
     lineHeight: 1.8,
-    marginBottom: '1.5rem',
+    marginBottom: '1.75rem',
     maxWidth: '100%',
+    color: 'var(--text-muted)',
   },
   photoSection: {
     display: 'flex',
-    gap: '1.5rem',
+    gap: '2rem',
     overflowX: 'auto',
     overflowY: 'hidden',
-    paddingBottom: '1rem',
+    paddingBottom: '1.5rem',
+    marginBottom: '4rem',
     scrollBehavior: 'smooth',
     scrollbarWidth: 'thin',
     scrollbarColor: 'rgba(199, 163, 77, 0.3) var(--bg-main)',
   },
   photoCard: {
-    borderRadius: '14px',
+    borderRadius: '16px',
     overflow: 'hidden',
-    minWidth: '400px',
+    minWidth: '420px',
     flexShrink: 0,
     position: 'relative',
+    transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+    cursor: 'pointer',
+    boxShadow: '0 6px 24px rgba(0, 0, 0, 0.35), 0 2px 8px rgba(0, 0, 0, 0.2)',
+    border: '1px solid rgba(199, 163, 77, 0.1)',
   },
   photo: {
     width: '100%',
@@ -151,42 +161,22 @@ const styles = {
     borderRadius: '4px',
     backdropFilter: 'blur(8px)',
   },
-  paginationDots: {
-    display: 'flex',
-    justifyContent: 'center',
-    gap: '0.75rem',
-    marginTop: '1.5rem',
-    marginBottom: '2rem',
-  },
-  dot: {
-    width: '10px',
-    height: '10px',
-    borderRadius: '50%',
-    border: 'none',
-    background: 'rgba(199, 163, 77, 0.25)',
-    cursor: 'pointer',
-    padding: 0,
-    transition: 'all 0.3s ease',
-  },
-  dotActive: {
-    background: 'var(--gold)',
-    width: '12px',
-    height: '12px',
-    boxShadow: '0 0 12px rgba(199, 163, 77, 0.6)',
-  },
   volunteerSection: {
-    marginTop: '5rem',
+    marginTop: '6rem',
   },
   volunteerTitle: {
-    fontSize: '2rem',
+    fontSize: 'clamp(1.75rem, 4vw, 2.25rem)',
     fontFamily: 'var(--font-display)',
-    marginBottom: '2rem',
+    marginBottom: '2.5rem',
     color: 'var(--text-main)',
   },
   volunteerCard: {
-    background: 'var(--bg-soft)',
-    padding: '2.5rem',
-    borderRadius: '14px',
+    background: 'linear-gradient(135deg, var(--bg-soft) 0%, rgba(20, 23, 28, 0.95) 100%)',
+    padding: '3rem',
+    borderRadius: '16px',
+    border: '1px solid rgba(199, 163, 77, 0.15)',
+    boxShadow: '0 6px 24px rgba(0, 0, 0, 0.25), 0 2px 8px rgba(0, 0, 0, 0.15)',
+    transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
   },
   volunteerHeader: {
     display: 'flex',
@@ -197,19 +187,23 @@ const styles = {
     gap: '1rem',
   },
   projectName: {
-    fontSize: '1.3rem',
+    fontSize: '1.35rem',
     fontFamily: 'var(--font-display)',
     margin: 0,
+    color: 'var(--text-main)',
+    fontWeight: 600,
   },
   volunteerPeriod: {
-    fontSize: '0.9rem',
+    fontSize: '0.925rem',
     color: 'var(--text-muted)',
+    letterSpacing: '0.02em',
   },
   volunteerRole: {
-    fontSize: '1rem',
+    fontSize: '1.05rem',
     fontStyle: 'italic',
-    marginBottom: '1.5rem',
+    marginBottom: '1.75rem',
     color: 'var(--text-muted)',
+    letterSpacing: '0.01em',
   },
   projectList: {
     listStyle: 'none',
@@ -217,8 +211,40 @@ const styles = {
     margin: 0,
   },
   projectItem: {
-    marginBottom: '1.25rem',
-    lineHeight: 1.7,
-    fontSize: '0.95rem',
+    marginBottom: '1.5rem',
+    lineHeight: 1.75,
+    fontSize: '0.975rem',
+    color: 'var(--text-muted)',
+  },
+  animateHidden: {
+    opacity: 0,
+    transform: 'translateY(25px)',
+    transition: 'opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1), transform 0.7s cubic-bezier(0.4, 0, 0.2, 1)',
+  },
+  animateVisible: {
+    opacity: 1,
+    transform: 'translateY(0)',
+    transition: 'opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1), transform 0.7s cubic-bezier(0.4, 0, 0.2, 1)',
   },
 };
+
+// Photo Card Component
+function PhotoCard({ src, alt, index }) {
+  const [photoRef, photoVisible] = useScrollAnimation({ 
+    threshold: 0.1, 
+    delay: index * 0.1 
+  });
+  
+  return (
+    <div 
+      ref={photoRef}
+      style={{
+        ...styles.photoCard,
+        ...(photoVisible ? styles.animateVisible : styles.animateHidden)
+      }}
+      className="photo-card"
+    >
+      <img src={src} alt={alt} style={styles.photo} />
+    </div>
+  );
+}
