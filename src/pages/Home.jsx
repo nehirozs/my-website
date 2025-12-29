@@ -310,7 +310,7 @@ const styles = {
   },
   experienceCard: {
     padding: '3rem 2.5rem',
-    background: 'linear-gradient(135deg, var(--bg-soft) 0%, rgba(20, 23, 28, 0.95) 100%)',
+    background: 'linear-gradient(135deg, var(--bg-main) 0%, rgba(10, 12, 15, 0.98) 100%)',
     borderRadius: '16px',
     display: 'flex',
     flexDirection: 'column',
@@ -382,7 +382,7 @@ const styles = {
   },
   skillBox: {
     padding: '2rem 1.25rem',
-    background: 'linear-gradient(135deg, var(--bg-soft) 0%, rgba(20, 23, 28, 0.95) 100%)',
+    background: 'linear-gradient(135deg, var(--bg-main) 0%, rgba(10, 12, 15, 0.98) 100%)',
     borderRadius: '16px',
     display: 'flex',
     flexDirection: 'column',

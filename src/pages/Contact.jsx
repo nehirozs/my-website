@@ -102,7 +102,7 @@ const styles = {
   },
   contactCard: {
     padding: '2.5rem 2rem',
-    background: 'linear-gradient(135deg, var(--bg-soft) 0%, rgba(20, 23, 28, 0.95) 100%)',
+    background: 'linear-gradient(135deg, var(--bg-main) 0%, rgba(10, 12, 15, 0.98) 100%)',
     borderRadius: '16px',
     boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2), 0 2px 6px rgba(0, 0, 0, 0.1)',
     transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
@@ -145,7 +145,7 @@ const styles = {
   },
   additionalInfo: {
     padding: '2.5rem',
-    background: 'linear-gradient(135deg, var(--bg-soft) 0%, rgba(20, 23, 28, 0.95) 100%)',
+    background: 'linear-gradient(135deg, var(--bg-main) 0%, rgba(10, 12, 15, 0.98) 100%)',
     borderRadius: '16px',
     textAlign: 'center',
     maxWidth: '650px',
