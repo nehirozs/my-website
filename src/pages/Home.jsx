@@ -36,7 +36,10 @@ export default function Home() {
       logo: mcgillLogo,
       schoolName: 'McGill University',
       period: 'August 2023 - December 2026 (expected)',
-      description: 'BSc in Computer Science • AI Concentration • Minor in Economics • Currently in third year • Relevant coursework includes Algorithm Design, Algorithms and Data Structures, Programming Challenges, Programming Languages & Paradigms, Computer Systems, Circuit Design, Introduction to Digital Audio, Economics Statistics, Microeconomics, Macroeconomics'
+      description: 'Relevant coursework includes Algorithm Design, Algorithms and Data Structures, Programming Challenges, Programming Languages & Paradigms, Computer Systems, Circuit Design, Introduction to Digital Audio, Economics Statistics, Microeconomics, Macroeconomics',
+      summary: 'Currently in third year • Relevant coursework: Algorithms, Data Structures, Systems, Digital Audio, Micro/Macroeconomics…',
+      degreeLine: 'BSc in Computer Science (AI Concentration) — Minor in Economics',
+      coursework: 'Algorithm Design, Algorithms & Data Structures, Programming Challenges, Programming Languages & Paradigms, Computer Systems, Circuit Design, Introduction to Digital Audio, Economics Statistics, Microeconomics, Macroeconomics'
     },
     {
       logo: robertCollegeLogo,
@@ -226,6 +229,9 @@ export default function Home() {
               schoolName={education.schoolName}
               period={education.period}
               description={education.description}
+              summary={education.summary}
+              coursework={education.coursework}
+              degreeLine={education.degreeLine}
               index={index}
             />
           ))}
@@ -291,7 +297,7 @@ const styles = {
     width: '100%',
     height: 'auto',
     borderRadius: '16px',
-    boxShadow: '0 12px 48px rgba(199, 163, 77, 0.5), 0 6px 24px rgba(199, 163, 77, 0.4), 0 0 80px rgba(199, 163, 77, 0.25)',
+    boxShadow: '0 8px 32px rgba(199, 163, 77, 0.25), 0 4px 16px rgba(199, 163, 77, 0.2), 0 0 40px rgba(199, 163, 77, 0.12)',
     border: '2px solid rgba(199, 163, 77, 0.2)',
     transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
   },

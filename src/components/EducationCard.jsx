@@ -1,30 +1,81 @@
+import { useRef } from 'react'
 import { useScrollAnimation } from '../hooks/useScrollAnimation'
 
-export default function EducationCard({ logo, schoolName, period, description, index = 0 }) {
+export default function EducationCard({ logo, schoolName, period, description, summary, coursework, degreeLine, index = 0 }) {
   const [cardRef, cardVisible] = useScrollAnimation({ 
     threshold: 0.1, 
     delay: index * 0.1 
   });
+  const summaryRef = useRef(null);
+  
+  const handleToggle = (e) => {
+    if (summaryRef.current) {
+      summaryRef.current.textContent = e.target.open ? 'Show less' : 'Show more';
+    }
+  };
   
   return (
     <div 
       ref={cardRef}
+      className="education-card"
       style={{
         ...styles.card,
         ...(cardVisible ? styles.animateVisible : styles.animateHidden)
       }}
     >
-      <div style={styles.logoColumn}>
-        <div style={styles.logoContainer}>
-          <img src={logo} alt={schoolName} style={styles.logo} />
+      {/* Desktop Layout: Logo left, content right */}
+      <div className="education-card-desktop">
+        <div style={styles.logoColumn}>
+          <div style={styles.logoContainer}>
+            <img src={logo} alt={schoolName} style={styles.logo} />
+          </div>
+        </div>
+        <div style={styles.contentColumn}>
+          <h4 style={styles.schoolName}>{schoolName}</h4>
+          <div style={styles.periodWrapper}>
+            <span style={styles.period}>{period}</span>
+          </div>
+          {degreeLine && <p className="program-headline">{degreeLine}</p>}
+          <p className="education-description-full program-description">{description}</p>
+          {summary && <p className="education-description-summary program-description">{summary}</p>}
         </div>
       </div>
-      <div style={styles.contentColumn}>
-        <h4 style={styles.schoolName}>{schoolName}</h4>
-        <div style={styles.periodWrapper}>
-          <span style={styles.period}>{period}</span>
+      
+      {/* Mobile Layout: Logo + name/dates row, then body below */}
+      <div className="education-card-mobile">
+        <div className="edu-header">
+          <div className="edu-logo-container">
+            <img src={logo} alt={schoolName} className="edu-logo" />
+          </div>
+          <div className="edu-header-text">
+            <h4 className="edu-title">{schoolName}</h4>
+            <span className="edu-dates">{period}</span>
+          </div>
         </div>
-        <p style={styles.description}>{description}</p>
+        <div className="edu-body">
+          {summary ? (
+            <>
+              {degreeLine && (
+                <>
+                  <p className="program-headline">{degreeLine}</p>
+                  <div className="section-divider"></div>
+                </>
+              )}
+              <p className="edu-summary program-description">{summary}</p>
+              {coursework && (
+                <details 
+                  className="coursework-details"
+                  onToggle={handleToggle}
+                >
+                  <summary ref={summaryRef} className="coursework-summary">Show more</summary>
+                  <p className="coursework-content">{coursework}</p>
+                </details>
+              )}
+            </>
+          ) : (
+            <p className="edu-description program-description">{description}</p>
+          )}
+        </div>
       </div>
     </div>
   );
@@ -32,9 +83,6 @@ export default function EducationCard({ logo, schoolName, period, description, i
 
 const styles = {
   card: {
-    display: 'grid',
-    gridTemplateColumns: '72px 1fr',
-    gap: '1.25rem',
     padding: '2.5rem',
     background: 'linear-gradient(135deg, var(--bg-main) 0%, rgba(10, 12, 15, 0.98) 100%)',
     borderRadius: '16px',
