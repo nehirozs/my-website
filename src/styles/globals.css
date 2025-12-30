@@ -164,6 +164,11 @@
     color: var(--text-muted);
   }
   
+  /* Photo Pagination - Hidden on Desktop */
+  .photo-pagination {
+    display: none;
+  }
+  
   /* Coursework Details Styling */
   .coursework-details {
     margin-top: 0.75rem;
@@ -525,6 +530,67 @@
       height: 350px !important;
       object-fit: cover !important;
       object-position: center !important;
+    }
+    
+    /* Photo Pagination Dots - Mobile Only */
+    .photo-pagination {
+      display: flex !important;
+      justify-content: center !important;
+      align-items: center !important;
+      gap: 0.75rem !important;
+      margin-top: 1rem !important;
+      padding: 0.5rem 0 !important;
+    }
+    
+    .photo-dot {
+      width: 10px !important;
+      height: 10px !important;
+      border-radius: 50% !important;
+      border: none !important;
+      background: rgba(199, 163, 77, 0.3) !important;
+      cursor: pointer !important;
+      padding: 0 !important;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+      min-width: 10px !important;
+      min-height: 10px !important;
+      outline: none !important;
+      opacity: 0.6;
+      transform: scale(1);
+    }
+    
+    .photo-dot:hover {
+      opacity: 0.8 !important;
+      transform: scale(1.1) !important;
+      background: rgba(199, 163, 77, 0.5) !important;
+    }
+    
+    .photo-dot-active {
+      background: var(--gold) !important;
+      width: 12px !important;
+      height: 12px !important;
+      box-shadow: 0 0 8px rgba(199, 163, 77, 0.5) !important;
+      min-width: 12px !important;
+      min-height: 12px !important;
+      opacity: 1 !important;
+      transform: scale(1.15) !important;
+      animation: dotPulse 2s ease-in-out infinite !important;
+    }
+    
+    .photo-dot:active {
+      transform: scale(0.95) !important;
+    }
+    
+    .photo-dot-active:active {
+      transform: scale(1.1) !important;
+    }
+    
+    @keyframes dotPulse {
+      0%, 100% {
+        box-shadow: 0 0 8px rgba(199, 163, 77, 0.5);
+      }
+      50% {
+        box-shadow: 0 0 12px rgba(199, 163, 77, 0.7);
+      }
     }
     
     /* Volunteer/Community section */

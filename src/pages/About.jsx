@@ -1,3 +1,4 @@
+import { useState, useEffect, useRef } from 'react'
 import singingPhoto from '../assets/singing.png'
 import bshPhoto from '../assets/bshpic.jpg'
 import balletPhoto from '../assets/ballet.JPG'
@@ -9,6 +10,29 @@ export default function About() {
   const [para2Ref, para2Visible] = useScrollAnimation({ threshold: 0.1, delay: 0.2 });
   const [volunteerTitleRef, volunteerTitleVisible] = useScrollAnimation({ threshold: 0.1 });
   const [volunteerCardRef, volunteerCardVisible] = useScrollAnimation({ threshold: 0.1, delay: 0.1 });
+  
+  const [activeIndex, setActiveIndex] = useState(0);
+  const photoSectionRef = useRef(null);
+  const photos = [bshPhoto, singingPhoto, balletPhoto];
+  
+  useEffect(() => {
+    const photoSection = photoSectionRef.current;
+    if (!photoSection) return;
+    
+    const handleScroll = () => {
+      const scrollLeft = photoSection.scrollLeft;
+      const cardWidth = photoSection.offsetWidth;
+      const newIndex = Math.round(scrollLeft / cardWidth);
+      setActiveIndex(Math.min(newIndex, photos.length - 1));
+    };
+    
+    photoSection.addEventListener('scroll', handleScroll);
+    handleScroll(); // Initial check
+    
+    return () => {
+      photoSection.removeEventListener('scroll', handleScroll);
+    };
+  }, [photos.length]);
   
   return (
     <div style={styles.container}>
@@ -47,10 +71,35 @@ export default function About() {
         </p>
       </div>
     
-      <div style={styles.photoSection} className="photo-section">
-        <PhotoCard src={bshPhoto} alt="BSH Internship" index={0} />
-        <PhotoCard src={singingPhoto} alt="Performance" index={1} />
-        <PhotoCard src={balletPhoto} alt="Ballet" index={2} />
+      <div style={styles.photoSectionWrapper}>
+        <div 
+          ref={photoSectionRef}
+          style={styles.photoSection} 
+          className="photo-section"
+        >
+          <PhotoCard src={bshPhoto} alt="BSH Internship" index={0} />
+          <PhotoCard src={singingPhoto} alt="Performance" index={1} />
+          <PhotoCard src={balletPhoto} alt="Ballet" index={2} />
+        </div>
+        <div className="photo-pagination">
+          {photos.map((_, index) => (
+            <button
+              key={index}
+              className={`photo-dot ${index === activeIndex ? 'photo-dot-active' : ''}`}
+              onClick={() => {
+                const photoSection = photoSectionRef.current;
+                if (photoSection) {
+                  const cardWidth = photoSection.offsetWidth;
+                  photoSection.scrollTo({
+                    left: cardWidth * index,
+                    behavior: 'smooth'
+                  });
+                }
+              }}
+              aria-label={`Go to image ${index + 1}`}
+            />
+          ))}
+        </div>
       </div>
 
       {/* Volunteer Section */}
@@ -119,13 +168,15 @@ const styles = {
     maxWidth: '100%',
     color: 'var(--text-muted)',
   },
+  photoSectionWrapper: {
+    marginBottom: '4rem',
+  },
   photoSection: {
     display: 'flex',
     gap: '2rem',
     overflowX: 'auto',
     overflowY: 'hidden',
     paddingBottom: '1.5rem',
-    marginBottom: '4rem',
     scrollBehavior: 'smooth',
     scrollbarWidth: 'thin',
     scrollbarColor: 'rgba(199, 163, 77, 0.3) var(--bg-main)',
