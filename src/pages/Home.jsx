@@ -273,7 +273,7 @@ const styles = {
   },
   name: {
     marginBottom: '1.5rem',
-    filter: 'drop-shadow(0 8px 24px rgba(199, 163, 77, 0.6)) drop-shadow(0 4px 12px rgba(199, 163, 77, 0.4))',
+    filter: 'drop-shadow(0 8px 24px rgba(212, 179, 102, 0.7)) drop-shadow(0 4px 12px rgba(212, 179, 102, 0.5))',
   },
   subtitle: {
     fontSize: '1.65rem',
@@ -297,8 +297,8 @@ const styles = {
     width: '100%',
     height: 'auto',
     borderRadius: '16px',
-    boxShadow: '0 8px 32px rgba(199, 163, 77, 0.25), 0 4px 16px rgba(199, 163, 77, 0.2), 0 0 40px rgba(199, 163, 77, 0.12)',
-    border: '2px solid rgba(199, 163, 77, 0.2)',
+    boxShadow: '0 8px 32px rgba(212, 179, 102, 0.3), 0 4px 16px rgba(212, 179, 102, 0.25), 0 0 40px rgba(212, 179, 102, 0.15)',
+    border: '2px solid rgba(212, 179, 102, 0.25)',
     transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
   },
   
@@ -316,7 +316,7 @@ const styles = {
   },
   experienceCard: {
     padding: '3rem 2.5rem',
-    background: 'linear-gradient(135deg, var(--bg-main) 0%, rgba(10, 12, 15, 0.98) 100%)',
+    background: 'linear-gradient(135deg, rgba(35, 38, 45, 0.95) 0%, rgba(30, 33, 40, 0.9) 100%)',
     borderRadius: '16px',
     display: 'flex',
     flexDirection: 'column',
@@ -324,8 +324,8 @@ const styles = {
     textAlign: 'center',
     transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
     cursor: 'pointer',
-    border: '1px solid rgba(199, 163, 77, 0.15)',
-    boxShadow: '0 6px 24px rgba(0, 0, 0, 0.25), 0 2px 8px rgba(0, 0, 0, 0.15)',
+    border: '1px solid rgba(212, 179, 102, 0.2)',
+    boxShadow: '0 6px 24px rgba(0, 0, 0, 0.3), 0 2px 8px rgba(0, 0, 0, 0.2)',
     position: 'relative',
     overflow: 'hidden',
     height: '100%',
@@ -338,7 +338,7 @@ const styles = {
     borderRadius: '12px',
     padding: '0',
     background: 'transparent',
-    border: '1px solid rgba(199, 163, 77, 0.1)',
+    border: '1px solid rgba(212, 179, 102, 0.15)',
     transition: 'all 0.3s ease',
     overflow: 'hidden',
   },
@@ -366,15 +366,15 @@ const styles = {
   },
   expCurrentBadge: {
     padding: '0.35rem 0.85rem',
-    background: 'linear-gradient(135deg, rgba(199, 163, 77, 0.2) 0%, rgba(199, 163, 77, 0.15) 100%)',
+    background: 'linear-gradient(135deg, rgba(212, 179, 102, 0.25) 0%, rgba(212, 179, 102, 0.2) 100%)',
     borderRadius: '6px',
     fontSize: '0.7rem',
     color: 'var(--gold)',
     fontWeight: 600,
     letterSpacing: '0.08em',
     textTransform: 'uppercase',
-    border: '1px solid rgba(199, 163, 77, 0.3)',
-    boxShadow: '0 2px 8px rgba(199, 163, 77, 0.2)',
+    border: '1px solid rgba(212, 179, 102, 0.35)',
+    boxShadow: '0 2px 8px rgba(212, 179, 102, 0.25)',
   },
   
   //  SKILLS SECTION 
@@ -388,7 +388,7 @@ const styles = {
   },
   skillBox: {
     padding: '2rem 1.25rem',
-    background: 'linear-gradient(135deg, var(--bg-main) 0%, rgba(10, 12, 15, 0.98) 100%)',
+    background: 'linear-gradient(135deg, rgba(35, 38, 45, 0.95) 0%, rgba(30, 33, 40, 0.9) 100%)',
     borderRadius: '16px',
     display: 'flex',
     flexDirection: 'column',
@@ -396,8 +396,8 @@ const styles = {
     gap: '0.875rem',
     transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
     cursor: 'pointer',
-    border: '1px solid rgba(199, 163, 77, 0.15)',
-    boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2), 0 2px 6px rgba(0, 0, 0, 0.1)',
+    border: '1px solid rgba(212, 179, 102, 0.2)',
+    boxShadow: '0 4px 12px rgba(0, 0, 0, 0.25), 0 2px 6px rgba(0, 0, 0, 0.15)',
     position: 'relative',
   },
   skillLogo: {

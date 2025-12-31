@@ -84,10 +84,10 @@ export default function EducationCard({ logo, schoolName, period, description, s
 const styles = {
   card: {
     padding: '2.5rem',
-    background: 'linear-gradient(135deg, var(--bg-main) 0%, rgba(10, 12, 15, 0.98) 100%)',
+    background: 'linear-gradient(135deg, rgba(35, 38, 45, 0.95) 0%, rgba(30, 33, 40, 0.9) 100%)',
     borderRadius: '16px',
-    border: '1px solid rgba(199, 163, 77, 0.15)',
-    boxShadow: '0 4px 16px rgba(0, 0, 0, 0.2), 0 2px 8px rgba(0, 0, 0, 0.1)',
+    border: '1px solid rgba(212, 179, 102, 0.2)',
+    boxShadow: '0 4px 16px rgba(0, 0, 0, 0.25), 0 2px 8px rgba(0, 0, 0, 0.15)',
     transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
   },
   logoColumn: {
@@ -103,7 +103,7 @@ const styles = {
     borderRadius: '10px',
     padding: '0',
     background: 'transparent',
-    border: '1px solid rgba(199, 163, 77, 0.1)',
+    border: '1px solid rgba(212, 179, 102, 0.15)',
     overflow: 'hidden',
   },
   logo: {

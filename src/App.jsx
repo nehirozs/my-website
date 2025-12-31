@@ -117,12 +117,12 @@ const styles = {
     position: 'sticky',
     top: 0,
     zIndex: 100,
-    background: 'rgba(13, 15, 18, 0.85)',
+    background: 'rgba(26, 29, 36, 0.9)',
     backdropFilter: 'blur(16px)',
     WebkitBackdropFilter: 'blur(16px)',
     flexWrap: 'wrap',
     gap: '1rem',
-    borderBottom: '1px solid rgba(199, 163, 77, 0.1)',
+    borderBottom: '1px solid rgba(212, 179, 102, 0.15)',
   },
   logo: {
     display: 'flex',
@@ -173,8 +173,8 @@ const styles = {
   footer: {
     padding: '5rem 4rem 4rem',
     marginTop: 'auto',
-    borderTop: '1px solid rgba(199, 163, 77, 0.1)',
-    background: 'linear-gradient(180deg, transparent 0%, rgba(13, 15, 18, 0.3) 100%)',
+    borderTop: '1px solid rgba(212, 179, 102, 0.15)',
+    background: 'linear-gradient(180deg, transparent 0%, rgba(26, 29, 36, 0.4) 100%)',
   },
   footerContent: {
     display: 'flex',
@@ -191,7 +191,7 @@ const styles = {
     letterSpacing: '0.02em',
   },
   footerDivider: {
-    color: 'rgba(199, 163, 77, 0.3)',
+    color: 'rgba(212, 179, 102, 0.4)',
     fontSize: '0.9rem',
   },
 
