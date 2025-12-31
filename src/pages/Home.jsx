@@ -133,7 +133,7 @@ export default function Home() {
             alt="3age"
             logoStyle={styles.expLogo}
             role="AI & Software Development Intern"
-            company="3age"
+            company="3age - Sabancı University Inovent"
             period="Current"
             badge="Active"
             index={0}
