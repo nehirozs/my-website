@@ -40,7 +40,7 @@ export default function Contact() {
           index={0}
         />
         <ContactCard 
-          href="https://linkedin.com/in/nehirozsunar"
+          href="https://www.linkedin.com/in/nehirozsunar"
           logo={linkedinLogo}
           title="LinkedIn"
           text="linkedin.com/in/nehirozsunar"

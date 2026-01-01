@@ -83,7 +83,7 @@ export default function App() {
           </a>
           <span style={styles.footerDivider}>•</span>
           <a 
-            href="https://linkedin.com/in/nehirozsunar" 
+            href="https://www.linkedin.com/in/nehirozsunar" 
             style={styles.footerLink}
           >
             LinkedIn

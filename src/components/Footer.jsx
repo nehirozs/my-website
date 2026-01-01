@@ -2,7 +2,7 @@ export function Footer() {
   return (
     <footer id="links" style={styles.footer}>
       <a href="https://github.com/nehirozs">GitHub</a>
-      <a href="https://linkedin.com/in/nehirozsunar">LinkedIn</a>
+      <a href="https://www.linkedin.com/in/nehirozsunar">LinkedIn</a>
       <a href="/resume.pdf">Resume</a>
     </footer>
   );
