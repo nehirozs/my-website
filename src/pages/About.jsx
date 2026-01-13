@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import singingPhoto from '../assets/singing.png'
 import bshPhoto from '../assets/bshpic.jpg'
-import balletPhoto from '../assets/ballet.JPG'
+// import balletPhoto from '../assets/ballet.JPG' // Commented out - kept for future use
 import { useScrollAnimation } from '../hooks/useScrollAnimation'
 
 export default function About() {
@@ -13,7 +13,7 @@ export default function About() {
   
   const [activeIndex, setActiveIndex] = useState(0);
   const photoSectionRef = useRef(null);
-  const photos = [bshPhoto, singingPhoto, balletPhoto];
+  const photos = [bshPhoto, singingPhoto]; // balletPhoto removed - kept commented above for future use
   
   useEffect(() => {
     const photoSection = photoSectionRef.current;
@@ -79,7 +79,7 @@ export default function About() {
         >
           <PhotoCard src={bshPhoto} alt="BSH Internship" index={0} />
           <PhotoCard src={singingPhoto} alt="Performance" index={1} />
-          <PhotoCard src={balletPhoto} alt="Ballet" index={2} />
+          {/* <PhotoCard src={balletPhoto} alt="Ballet" index={2} /> */} {/* Commented out - kept for future use */}
         </div>
         <div className="photo-pagination">
           {photos.map((_, index) => (
