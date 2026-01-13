@@ -9,7 +9,8 @@ export default function About() {
   const [para1Ref, para1Visible] = useScrollAnimation({ threshold: 0.1, delay: 0.1 });
   const [para2Ref, para2Visible] = useScrollAnimation({ threshold: 0.1, delay: 0.2 });
   const [volunteerTitleRef, volunteerTitleVisible] = useScrollAnimation({ threshold: 0.1 });
-  const [volunteerCardRef, volunteerCardVisible] = useScrollAnimation({ threshold: 0.1, delay: 0.1 });
+  const [interdisciplinaryCardRef, interdisciplinaryCardVisible] = useScrollAnimation({ threshold: 0.1, delay: 0.1 });
+  const [volunteerCardRef, volunteerCardVisible] = useScrollAnimation({ threshold: 0.1, delay: 0.2 });
   
   const [activeIndex, setActiveIndex] = useState(0);
   const photoSectionRef = useRef(null);
@@ -111,14 +112,31 @@ export default function About() {
             ...(volunteerTitleVisible ? styles.animateVisible : styles.animateHidden)
           }}
         >
-          Community Engagement
+          Extracurriculars
         </h2>
+        
+        <div 
+          ref={interdisciplinaryCardRef}
+          style={{
+            ...styles.volunteerCard,
+            ...(interdisciplinaryCardVisible ? styles.animateVisible : styles.animateHidden)
+          }}
+        >
+          <h3 style={styles.projectName}>Interdisciplinary Background</h3>
+          <p style={{...styles.paragraph, marginTop: '1.5rem', marginBottom: 0}}>
+            My background includes 18+ years of professional classical ballet training, a conservatory diploma from Mimar Sinan Fine Arts University (graduated 2 years early), and ongoing training with Les Grands Ballets Canadiens.
+          </p>
+          <p style={{...styles.paragraph, marginTop: '1.75rem', marginBottom: 0}}>
+            Alongside dance, I am classically trained in music. I enjoy playing the piano and violin, sing, and completed Grade 8 Violin (2021) through Trinity College London.
+          </p>
+        </div>
         
         <div 
           ref={volunteerCardRef}
           style={{
             ...styles.volunteerCard,
-            ...(volunteerCardVisible ? styles.animateVisible : styles.animateHidden)
+            ...(volunteerCardVisible ? styles.animateVisible : styles.animateHidden),
+            marginTop: '2rem'
           }}
         >
           <div style={styles.volunteerHeader}>
