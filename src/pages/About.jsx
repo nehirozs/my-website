@@ -125,7 +125,7 @@ export default function About() {
         >
           <h3 style={styles.projectName}>Interdisciplinary Background</h3>
           <p style={{...styles.paragraph, marginTop: '1.5rem', marginBottom: 0}}>
-            My background includes professional classical ballet training (18+ years), a conservatory diploma from Mimar Sinan Fine Arts University (graduated 2 years early), and ongoing training with Les Grands Ballets Canadiens.
+            My background includes professional classical ballet training (18+ years), a conservatory diploma from Mimar Sinan Fine Arts University, and ongoing training with Les Grands Ballets Canadiens.
           </p>
           <p style={{...styles.paragraph, marginTop: '1.75rem', marginBottom: 0}}>
             Alongside dance, I enjoy playing the piano, violin, and singing.
@@ -155,13 +155,13 @@ export default function About() {
           ) : (
             <ul style={styles.projectList}>
               <li style={styles.projectItem}>
-                <strong>Proverb Workshop (2021):</strong> Led online workshops for migrant students (ages 10–15) from Syria, Turkey, Lebanon, and Estonia to exchange cultural proverbs; contributed to a published collection promoting intercultural understanding.
+                <strong>Proverb Workshop (2021):</strong> Led online workshops for migrant students (ages 10–15) across four countries to exchange cultural proverbs; contributed to a published collection on intercultural understanding.
               </li>
               <li style={styles.projectItem}>
-                <strong>Manyas United (2021):</strong> Taught environmental awareness through art and English lessons in virtual sessions for primary school students; collaborated with a multidisciplinary instructor team.
+                <strong>Manyas United (2021):</strong> Taught environmental awareness through art and English in virtual primary school sessions; collaborated with a multidisciplinary instructor team.
               </li>
               <li style={styles.projectItem}>
-                <strong>Esenyurt CIP (2019):</strong> Designed murals for a mixed Turkish–Syrian primary school and organized creative workshops in music, drama, and drawing to support student engagement.
+                <strong>Esenyurt CIP (2019):</strong> Designed murals and organized creative workshops (music, drama, drawing) for a mixed Turkish–Syrian primary school to support student engagement.
               </li>
             </ul>
           )}
