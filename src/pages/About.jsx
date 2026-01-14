@@ -13,6 +13,7 @@ export default function About() {
   const [volunteerCardRef, volunteerCardVisible] = useScrollAnimation({ threshold: 0.1, delay: 0.2 });
   
   const [activeIndex, setActiveIndex] = useState(0);
+  const [cipExpanded, setCipExpanded] = useState(false);
   const photoSectionRef = useRef(null);
   const photos = [bshPhoto, singingPhoto]; // balletPhoto removed - kept commented above for future use
   
@@ -124,10 +125,10 @@ export default function About() {
         >
           <h3 style={styles.projectName}>Interdisciplinary Background</h3>
           <p style={{...styles.paragraph, marginTop: '1.5rem', marginBottom: 0}}>
-            My background includes 18+ years of professional classical ballet training, a conservatory diploma from Mimar Sinan Fine Arts University (graduated 2 years early), and ongoing training with Les Grands Ballets Canadiens.
+            My background includes professional classical ballet training (18+ years), a conservatory diploma from Mimar Sinan Fine Arts University (graduated 2 years early), and ongoing training with Les Grands Ballets Canadiens.
           </p>
           <p style={{...styles.paragraph, marginTop: '1.75rem', marginBottom: 0}}>
-            Alongside dance, I am classically trained in music. I enjoy playing the piano and violin, sing, and completed Grade 8 Violin (2021) through Trinity College London.
+            Alongside dance, I enjoy playing the piano, violin, and singing.
           </p>
         </div>
         
@@ -136,8 +137,10 @@ export default function About() {
           style={{
             ...styles.volunteerCard,
             ...(volunteerCardVisible ? styles.animateVisible : styles.animateHidden),
-            marginTop: '2rem'
+            marginTop: '2rem',
+            cursor: 'pointer'
           }}
+          onClick={() => setCipExpanded(!cipExpanded)}
         >
           <div style={styles.volunteerHeader}>
             <h3 style={styles.projectName}>Robert College Community Involvement Projects (CIP)</h3>
@@ -145,17 +148,32 @@ export default function About() {
           </div>
           <p style={styles.volunteerRole}>Volunteer Educator & Project Director</p>
           
-          <ul style={styles.projectList}>
-            <li style={styles.projectItem}>
-              <strong>Proverb Workshop (2021):</strong> Led online workshops for migrant students (ages 10–15) from Syria, Turkey, Lebanon, and Estonia to exchange cultural proverbs; contributed to a published collection promoting intercultural understanding.
-            </li>
-            <li style={styles.projectItem}>
-              <strong>Manyas United (2021):</strong> Taught environmental awareness through art and English lessons in virtual sessions for primary school students; collaborated with a multidisciplinary instructor team.
-            </li>
-            <li style={styles.projectItem}>
-              <strong>Esenyurt CIP (2019):</strong> Designed murals for a mixed Turkish–Syrian primary school and organized creative workshops in music, drama, and drawing to support student engagement.
-            </li>
-          </ul>
+          {!cipExpanded ? (
+            <p style={{...styles.paragraph, marginTop: '1.5rem', marginBottom: 0}}>
+              Designed and led 3 cross-cultural education initiatives for 150+ students across 4 countries
+            </p>
+          ) : (
+            <ul style={styles.projectList}>
+              <li style={styles.projectItem}>
+                <strong>Proverb Workshop (2021):</strong> Led online workshops for migrant students (ages 10–15) from Syria, Turkey, Lebanon, and Estonia to exchange cultural proverbs; contributed to a published collection promoting intercultural understanding.
+              </li>
+              <li style={styles.projectItem}>
+                <strong>Manyas United (2021):</strong> Taught environmental awareness through art and English lessons in virtual sessions for primary school students; collaborated with a multidisciplinary instructor team.
+              </li>
+              <li style={styles.projectItem}>
+                <strong>Esenyurt CIP (2019):</strong> Designed murals for a mixed Turkish–Syrian primary school and organized creative workshops in music, drama, and drawing to support student engagement.
+              </li>
+            </ul>
+          )}
+          
+          <div 
+            style={{
+              ...styles.expandIndicator,
+              transform: cipExpanded ? 'rotate(90deg)' : 'rotate(0deg)'
+            }}
+          >
+            ▶
+          </div>
         </div>
       </div>
     </div>
@@ -246,6 +264,7 @@ const styles = {
     border: '1px solid rgba(212, 179, 102, 0.2)',
     boxShadow: '0 6px 24px rgba(0, 0, 0, 0.3), 0 2px 8px rgba(0, 0, 0, 0.2)',
     transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+    position: 'relative',
   },
   volunteerHeader: {
     display: 'flex',
@@ -284,6 +303,15 @@ const styles = {
     lineHeight: 1.75,
     fontSize: '0.975rem',
     color: 'var(--text-muted)',
+  },
+  expandIndicator: {
+    position: 'absolute',
+    top: '9rem',
+    right: '3rem',
+    fontSize: '1.2rem',
+    color: 'var(--gold)',
+    transition: 'transform 0.3s ease',
+    userSelect: 'none',
   },
   animateHidden: {
     opacity: 0,

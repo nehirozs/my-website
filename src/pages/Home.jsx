@@ -95,7 +95,7 @@ export default function Home() {
               ...(bioVisible ? styles.animateVisible : styles.animateHidden)
             }}
           >
-            Third-year student · Expected graduation December 2026
+            Third-year student · Expected graduation April 2027
           </p>
         </div>
         
