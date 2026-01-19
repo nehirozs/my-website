@@ -13,7 +13,6 @@ export default function About() {
   const [volunteerCardRef, volunteerCardVisible] = useScrollAnimation({ threshold: 0.1, delay: 0.2 });
   
   const [activeIndex, setActiveIndex] = useState(0);
-  const [cipExpanded, setCipExpanded] = useState(false);
   const photoSectionRef = useRef(null);
   const photos = [bshPhoto, singingPhoto]; // balletPhoto removed - kept commented above for future use
   
@@ -137,10 +136,8 @@ export default function About() {
           style={{
             ...styles.volunteerCard,
             ...(volunteerCardVisible ? styles.animateVisible : styles.animateHidden),
-            marginTop: '2rem',
-            cursor: 'pointer'
+            marginTop: '2rem'
           }}
-          onClick={() => setCipExpanded(!cipExpanded)}
         >
           <div style={styles.volunteerHeader}>
             <h3 style={styles.projectName}>Robert College Community Involvement Projects (CIP)</h3>
@@ -148,32 +145,9 @@ export default function About() {
           </div>
           <p style={styles.volunteerRole}>Volunteer Educator & Project Director</p>
           
-          {!cipExpanded ? (
-            <p style={{...styles.paragraph, marginTop: '1.5rem', marginBottom: 0}}>
-              Designed and led 3 cross-cultural education initiatives for 150+ students across 4 countries
-            </p>
-          ) : (
-            <ul style={styles.projectList}>
-              <li style={styles.projectItem}>
-                <strong>Proverb Workshop (2021):</strong> Led online workshops for migrant students (ages 10–15) across four countries to exchange cultural proverbs; contributed to a published collection on intercultural understanding.
-              </li>
-              <li style={styles.projectItem}>
-                <strong>Manyas United (2021):</strong> Taught environmental awareness through art and English in virtual primary school sessions; collaborated with a multidisciplinary instructor team.
-              </li>
-              <li style={styles.projectItem}>
-                <strong>Esenyurt CIP (2019):</strong> Designed murals and organized creative workshops (music, drama, drawing) for a mixed Turkish–Syrian primary school to support student engagement.
-              </li>
-            </ul>
-          )}
-          
-          <div 
-            style={{
-              ...styles.expandIndicator,
-              transform: cipExpanded ? 'rotate(90deg)' : 'rotate(0deg)'
-            }}
-          >
-            ▶
-          </div>
+          <p style={{...styles.paragraph, marginTop: '1.5rem', marginBottom: 0}}>
+            Designed and led 3 cross-cultural education initiatives for 150+ students across 4 countries
+          </p>
         </div>
       </div>
     </div>
@@ -292,26 +266,6 @@ const styles = {
     marginBottom: '1.75rem',
     color: 'var(--text-muted)',
     letterSpacing: '0.01em',
-  },
-  projectList: {
-    listStyle: 'none',
-    padding: 0,
-    margin: 0,
-  },
-  projectItem: {
-    marginBottom: '1.5rem',
-    lineHeight: 1.75,
-    fontSize: '0.975rem',
-    color: 'var(--text-muted)',
-  },
-  expandIndicator: {
-    position: 'absolute',
-    top: '9rem',
-    right: '3rem',
-    fontSize: '1.2rem',
-    color: 'var(--gold)',
-    transition: 'transform 0.3s ease',
-    userSelect: 'none',
   },
   animateHidden: {
     opacity: 0,
