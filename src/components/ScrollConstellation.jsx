@@ -109,7 +109,7 @@ export default function ScrollConstellation() {
             y1={50 + index * 90}
             x2="50"
             y2={140 + index * 90}
-            stroke="rgba(199, 163, 77, 0.2)"
+            stroke="rgba(212, 179, 102, 0.25)"
             strokeWidth="1"
           />
         ))}
@@ -126,12 +126,12 @@ export default function ScrollConstellation() {
       }}
       onMouseEnter={(e) => {
         e.currentTarget.style.transform = 'scale(1.3)';
-        e.currentTarget.style.filter = 'drop-shadow(0 0 8px rgba(199, 163, 77, 0.8))';
+        e.currentTarget.style.filter = 'drop-shadow(0 0 8px rgba(212, 179, 102, 0.9))';
       }}
       onMouseLeave={(e) => {
         if (activeSection !== index) {
           e.currentTarget.style.transform = 'scale(1)';
-          e.currentTarget.style.filter = 'drop-shadow(0 0 4px rgba(199, 163, 77, 0.3))';
+          e.currentTarget.style.filter = 'drop-shadow(0 0 4px rgba(212, 179, 102, 0.4))';
         }
       }}
       aria-label={`Go to ${section.label}`}
@@ -181,11 +181,11 @@ const styles = {
   starButton: {
     background: 'transparent',
     border: 'none',
-    color: '#c7a34d',
+    color: '#d4b366',
     fontSize: '1rem',
     cursor: 'pointer',
     transition: 'all 0.3s ease',
-    filter: 'drop-shadow(0 0 4px rgba(199, 163, 77, 0.3))',
+    filter: 'drop-shadow(0 0 4px rgba(212, 179, 102, 0.4))',
     padding: 0,
     width: '24px', 
     height: '24px', 
@@ -196,7 +196,7 @@ const styles = {
 
   starButtonActive: {
     transform: 'scale(1.4)',
-    filter: 'drop-shadow(0 0 12px rgba(199, 163, 77, 0.8))',
+    filter: 'drop-shadow(0 0 12px rgba(212, 179, 102, 0.9))',
   },
   label: {
     position: 'absolute',
@@ -218,7 +218,7 @@ const styles = {
     bottom: '2rem',
     right: '2rem',
     background: 'rgba(20, 23, 28, 0.9)',
-    border: '1px solid rgba(199, 163, 77, 0.3)',
+    border: '1px solid rgba(212, 179, 102, 0.35)',
     borderRadius: '50%',
     width: '56px',
     height: '56px',
@@ -234,16 +234,16 @@ const styles = {
     transform: 'rotate(180deg)',
   },
   starGlow: {
-    color: '#c7a34d',
+    color: '#d4b366',
     fontSize: '1.5rem',
-    filter: 'drop-shadow(0 0 8px rgba(199, 163, 77, 0.6))',
+    filter: 'drop-shadow(0 0 8px rgba(212, 179, 102, 0.7))',
   },
   mobileMenu: {
     position: 'fixed',
     bottom: '5rem',
     right: '2rem',
     background: 'rgba(20, 23, 28, 0.95)',
-    border: '1px solid rgba(199, 163, 77, 0.3)',
+    border: '1px solid rgba(212, 179, 102, 0.35)',
     borderRadius: '14px',
     padding: '1rem',
     zIndex: 1000,
@@ -267,12 +267,12 @@ const styles = {
     transition: 'all 0.2s ease',
   },
   mobileMenuItemActive: {
-    background: 'rgba(199, 163, 77, 0.1)',
-    color: '#c7a34d',
+    background: 'rgba(212, 179, 102, 0.15)',
+    color: '#d4b366',
   },
   mobileStar: {
     fontSize: '1rem',
-    color: '#c7a34d',
+    color: '#d4b366',
   },
   mobileLabel: {
     letterSpacing: '0.05em',

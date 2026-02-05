@@ -1,6 +1,7 @@
+import { useState, useEffect, useRef } from 'react'
 import singingPhoto from '../assets/singing.png'
 import bshPhoto from '../assets/bshpic.jpg'
-import balletPhoto from '../assets/ballet.JPG'
+// import balletPhoto from '../assets/ballet.JPG' // Commented out - kept for future use
 import { useScrollAnimation } from '../hooks/useScrollAnimation'
 
 export default function About() {
@@ -8,7 +9,31 @@ export default function About() {
   const [para1Ref, para1Visible] = useScrollAnimation({ threshold: 0.1, delay: 0.1 });
   const [para2Ref, para2Visible] = useScrollAnimation({ threshold: 0.1, delay: 0.2 });
   const [volunteerTitleRef, volunteerTitleVisible] = useScrollAnimation({ threshold: 0.1 });
-  const [volunteerCardRef, volunteerCardVisible] = useScrollAnimation({ threshold: 0.1, delay: 0.1 });
+  const [interdisciplinaryCardRef, interdisciplinaryCardVisible] = useScrollAnimation({ threshold: 0.1, delay: 0.1 });
+  const [volunteerCardRef, volunteerCardVisible] = useScrollAnimation({ threshold: 0.1, delay: 0.2 });
+  
+  const [activeIndex, setActiveIndex] = useState(0);
+  const photoSectionRef = useRef(null);
+  const photos = [bshPhoto, singingPhoto]; // balletPhoto removed - kept commented above for future use
+  
+  useEffect(() => {
+    const photoSection = photoSectionRef.current;
+    if (!photoSection) return;
+    
+    const handleScroll = () => {
+      const scrollLeft = photoSection.scrollLeft;
+      const cardWidth = photoSection.offsetWidth;
+      const newIndex = Math.round(scrollLeft / cardWidth);
+      setActiveIndex(Math.min(newIndex, photos.length - 1));
+    };
+    
+    photoSection.addEventListener('scroll', handleScroll);
+    handleScroll(); // Initial check
+    
+    return () => {
+      photoSection.removeEventListener('scroll', handleScroll);
+    };
+  }, [photos.length]);
   
   return (
     <div style={styles.container}>
@@ -47,10 +72,35 @@ export default function About() {
         </p>
       </div>
     
-      <div style={styles.photoSection} className="photo-section">
-        <PhotoCard src={bshPhoto} alt="BSH Internship" index={0} />
-        <PhotoCard src={singingPhoto} alt="Performance" index={1} />
-        <PhotoCard src={balletPhoto} alt="Ballet" index={2} />
+      <div style={styles.photoSectionWrapper}>
+        <div 
+          ref={photoSectionRef}
+          style={styles.photoSection} 
+          className="photo-section"
+        >
+          <PhotoCard src={bshPhoto} alt="BSH Internship" index={0} />
+          <PhotoCard src={singingPhoto} alt="Performance" index={1} />
+          {/* <PhotoCard src={balletPhoto} alt="Ballet" index={2} /> */} {/* Commented out - kept for future use */}
+        </div>
+        <div className="photo-pagination">
+          {photos.map((_, index) => (
+            <button
+              key={index}
+              className={`photo-dot ${index === activeIndex ? 'photo-dot-active' : ''}`}
+              onClick={() => {
+                const photoSection = photoSectionRef.current;
+                if (photoSection) {
+                  const cardWidth = photoSection.offsetWidth;
+                  photoSection.scrollTo({
+                    left: cardWidth * index,
+                    behavior: 'smooth'
+                  });
+                }
+              }}
+              aria-label={`Go to image ${index + 1}`}
+            />
+          ))}
+        </div>
       </div>
 
       {/* Volunteer Section */}
@@ -62,14 +112,31 @@ export default function About() {
             ...(volunteerTitleVisible ? styles.animateVisible : styles.animateHidden)
           }}
         >
-          Community Engagement
+          Extracurriculars
         </h2>
+        
+        <div 
+          ref={interdisciplinaryCardRef}
+          style={{
+            ...styles.volunteerCard,
+            ...(interdisciplinaryCardVisible ? styles.animateVisible : styles.animateHidden)
+          }}
+        >
+          <h3 style={styles.projectName}>Interdisciplinary Background</h3>
+          <p style={{...styles.paragraph, marginTop: '1.5rem', marginBottom: 0}}>
+            My background includes professional classical ballet training (18+ years), a conservatory diploma from Mimar Sinan Fine Arts University, and ongoing training with Les Grands Ballets Canadiens.
+          </p>
+          <p style={{...styles.paragraph, marginTop: '1.75rem', marginBottom: 0}}>
+            Alongside dance, I enjoy playing the piano, violin, and singing.
+          </p>
+        </div>
         
         <div 
           ref={volunteerCardRef}
           style={{
             ...styles.volunteerCard,
-            ...(volunteerCardVisible ? styles.animateVisible : styles.animateHidden)
+            ...(volunteerCardVisible ? styles.animateVisible : styles.animateHidden),
+            marginTop: '2rem'
           }}
         >
           <div style={styles.volunteerHeader}>
@@ -78,17 +145,9 @@ export default function About() {
           </div>
           <p style={styles.volunteerRole}>Volunteer Educator & Project Director</p>
           
-          <ul style={styles.projectList}>
-            <li style={styles.projectItem}>
-              <strong>Proverb Workshop (2021):</strong> Led online workshops for migrant students (ages 10–15) from Syria, Turkey, Lebanon, and Estonia to exchange cultural proverbs; contributed to a published collection promoting intercultural understanding.
-            </li>
-            <li style={styles.projectItem}>
-              <strong>Manyas United (2021):</strong> Taught environmental awareness through art and English lessons in virtual sessions for primary school students; collaborated with a multidisciplinary instructor team.
-            </li>
-            <li style={styles.projectItem}>
-              <strong>Esenyurt CIP (2019):</strong> Designed murals for a mixed Turkish–Syrian primary school and organized creative workshops in music, drama, and drawing to support student engagement.
-            </li>
-          </ul>
+          <p style={{...styles.paragraph, marginTop: '1.5rem', marginBottom: 0}}>
+            Designed and led 3 cross-cultural education initiatives for 150+ students across 4 countries
+          </p>
         </div>
       </div>
     </div>
@@ -119,16 +178,18 @@ const styles = {
     maxWidth: '100%',
     color: 'var(--text-muted)',
   },
+  photoSectionWrapper: {
+    marginBottom: '4rem',
+  },
   photoSection: {
     display: 'flex',
     gap: '2rem',
     overflowX: 'auto',
     overflowY: 'hidden',
     paddingBottom: '1.5rem',
-    marginBottom: '4rem',
     scrollBehavior: 'smooth',
     scrollbarWidth: 'thin',
-    scrollbarColor: 'rgba(199, 163, 77, 0.3) var(--bg-main)',
+    scrollbarColor: 'rgba(212, 179, 102, 0.4) var(--bg-main)',
   },
   photoCard: {
     borderRadius: '16px',
@@ -139,7 +200,7 @@ const styles = {
     transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
     cursor: 'pointer',
     boxShadow: '0 6px 24px rgba(0, 0, 0, 0.35), 0 2px 8px rgba(0, 0, 0, 0.2)',
-    border: '1px solid rgba(199, 163, 77, 0.1)',
+    border: '1px solid rgba(212, 179, 102, 0.15)',
   },
   photo: {
     width: '100%',
@@ -156,7 +217,7 @@ const styles = {
     color: '#e6e9ef',
     textTransform: 'uppercase',
     letterSpacing: '0.15em',
-    background: 'rgba(13, 15, 18, 0.7)',
+    background: 'rgba(26, 29, 36, 0.75)',
     padding: '0.5rem 1rem',
     borderRadius: '4px',
     backdropFilter: 'blur(8px)',
@@ -171,12 +232,13 @@ const styles = {
     color: 'var(--text-main)',
   },
   volunteerCard: {
-    background: 'linear-gradient(135deg, var(--bg-main) 0%, rgba(10, 12, 15, 0.98) 100%)',
+    background: 'linear-gradient(135deg, rgba(35, 38, 45, 0.95) 0%, rgba(30, 33, 40, 0.9) 100%)',
     padding: '3rem',
     borderRadius: '16px',
-    border: '1px solid rgba(199, 163, 77, 0.15)',
-    boxShadow: '0 6px 24px rgba(0, 0, 0, 0.25), 0 2px 8px rgba(0, 0, 0, 0.15)',
+    border: '1px solid rgba(212, 179, 102, 0.2)',
+    boxShadow: '0 6px 24px rgba(0, 0, 0, 0.3), 0 2px 8px rgba(0, 0, 0, 0.2)',
     transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+    position: 'relative',
   },
   volunteerHeader: {
     display: 'flex',
@@ -204,17 +266,6 @@ const styles = {
     marginBottom: '1.75rem',
     color: 'var(--text-muted)',
     letterSpacing: '0.01em',
-  },
-  projectList: {
-    listStyle: 'none',
-    padding: 0,
-    margin: 0,
-  },
-  projectItem: {
-    marginBottom: '1.5rem',
-    lineHeight: 1.75,
-    fontSize: '0.975rem',
-    color: 'var(--text-muted)',
   },
   animateHidden: {
     opacity: 0,

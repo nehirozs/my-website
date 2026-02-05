@@ -40,7 +40,7 @@ export default function Contact() {
           index={0}
         />
         <ContactCard 
-          href="https://linkedin.com/in/nehirozsunar"
+          href="https://www.linkedin.com/in/nehirozsunar"
           logo={linkedinLogo}
           title="LinkedIn"
           text="linkedin.com/in/nehirozsunar"
@@ -102,9 +102,9 @@ const styles = {
   },
   contactCard: {
     padding: '2.5rem 2rem',
-    background: 'linear-gradient(135deg, var(--bg-main) 0%, rgba(10, 12, 15, 0.98) 100%)',
+    background: 'linear-gradient(135deg, rgba(35, 38, 45, 0.95) 0%, rgba(30, 33, 40, 0.9) 100%)',
     borderRadius: '16px',
-    boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2), 0 2px 6px rgba(0, 0, 0, 0.1)',
+    boxShadow: '0 4px 12px rgba(0, 0, 0, 0.25), 0 2px 6px rgba(0, 0, 0, 0.15)',
     transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
     cursor: 'pointer',
     height: '100%',
@@ -112,7 +112,7 @@ const styles = {
     flexDirection: 'column',
     alignItems: 'center',
     textAlign: 'center',
-    border: '1px solid rgba(199, 163, 77, 0.15)',
+    border: '1px solid rgba(212, 179, 102, 0.2)',
     position: 'relative',
     overflow: 'hidden',
   },
@@ -124,7 +124,7 @@ const styles = {
     borderRadius: '12px',
     padding: '0',
     background: 'transparent',
-    border: '1px solid rgba(199, 163, 77, 0.1)',
+    border: '1px solid rgba(212, 179, 102, 0.15)',
     transition: 'transform 0.3s ease, filter 0.3s ease',
     overflow: 'hidden',
     filter: 'brightness(0.95)',
@@ -145,13 +145,13 @@ const styles = {
   },
   additionalInfo: {
     padding: '2.5rem',
-    background: 'linear-gradient(135deg, var(--bg-main) 0%, rgba(10, 12, 15, 0.98) 100%)',
+    background: 'linear-gradient(135deg, rgba(35, 38, 45, 0.95) 0%, rgba(30, 33, 40, 0.9) 100%)',
     borderRadius: '16px',
     textAlign: 'center',
     maxWidth: '650px',
     margin: '0 auto',
-    border: '1px solid rgba(199, 163, 77, 0.15)',
-    boxShadow: '0 4px 16px rgba(0, 0, 0, 0.2)',
+    border: '1px solid rgba(212, 179, 102, 0.2)',
+    boxShadow: '0 4px 16px rgba(0, 0, 0, 0.25)',
   },
   note: {
     fontSize: '0.95rem',

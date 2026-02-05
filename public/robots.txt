@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+# Disallow all assets except those explicitly listed in image-sitemap.xml
+Disallow: /assets/
+
+Sitemap: https://nehirozsunar.com/sitemap.xml
+Sitemap: https://nehirozsunar.com/image-sitemap.xml
