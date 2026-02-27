@@ -12,7 +12,7 @@ import logisimLogo from '../logos/logisim.png'
 import reactLogo from '../logos/react.png'
 import profilePic from '../assets/profile.jpg'
 import bshLogo from '../assets/bsh.jpg'
-import threeageLogo from '../assets/3age.jpeg'
+import sucoolLogo from '../assets/sucool.png'
 import gameCircleLogo from '../assets/gamecircle.jpeg'
 import mcgillLogo from '../assets/mcgill.svg'
 import mimarSinanLogo from '../assets/msgsu.jpg'
@@ -129,11 +129,11 @@ export default function Home() {
         
         <div style={styles.experienceGrid}>
           <ExperienceCard 
-            logo={threeageLogo}
-            alt="3age"
+            logo={sucoolLogo}
+            alt="SUCool"
             logoStyle={styles.expLogo}
             role="AI & Software Development Intern"
-            company="3age - Sabancı University Inovent"
+            company="SUCool - Sabancı University Start-up Company League"
             period="Current"
             badge="Active"
             index={0}
