@@ -133,7 +133,7 @@ export default function Home() {
             alt="SUCool"
             logoStyle={styles.expLogo}
             role="AI & Software Development Intern"
-            company="SUCool - Sabancı University Start-up Company League"
+            company="3AGE - Sabancı University Start-up Company League"
             period="Current"
             badge="Active"
             index={0}
