@@ -42,13 +42,13 @@ export default function Background() {
 
         ctx.beginPath();
         ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(199, 163, 77, ${currentOpacity * 0.6})`;
+        ctx.fillStyle = `rgba(212, 179, 102, ${currentOpacity * 0.7})`;
         ctx.fill();
         
         // Add glow effect for larger stars
         if (star.radius > 1) {
           ctx.shadowBlur = 3;
-          ctx.shadowColor = 'rgba(199, 163, 77, 0.5)';
+          ctx.shadowColor = 'rgba(212, 179, 102, 0.6)';
           ctx.fill();
           ctx.shadowBlur = 0;
         }
@@ -98,9 +98,9 @@ export default function Background() {
           zIndex: 0,
           pointerEvents: 'none',
           background: `
-            radial-gradient(circle at 20% 30%, rgba(199, 163, 77, 0.08) 0%, transparent 50%),
-            radial-gradient(circle at 80% 70%, rgba(199, 163, 77, 0.06) 0%, transparent 50%),
-            radial-gradient(circle at 50% 50%, rgba(13, 15, 18, 0.4) 0%, transparent 70%)
+            radial-gradient(circle at 20% 30%, rgba(212, 179, 102, 0.12) 0%, transparent 50%),
+            radial-gradient(circle at 80% 70%, rgba(212, 179, 102, 0.08) 0%, transparent 50%),
+            radial-gradient(circle at 50% 50%, rgba(26, 29, 36, 0.3) 0%, transparent 70%)
           `,
           animation: 'gradientShift 20s ease infinite',
         }}
@@ -120,4 +120,5 @@ export default function Background() {
     </>
   );
 }
+
 
