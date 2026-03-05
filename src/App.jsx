@@ -2,6 +2,7 @@ import { Link, Routes, Route, useLocation } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import Home from './pages/Home'
 import About from './pages/About'
+import Projects from './pages/Projects'
 import Contact from './pages/Contact'
 import ScrollToTop from './components/ScrollToTop'
 import Background from './components/Background'
@@ -50,6 +51,16 @@ export default function App() {
             About
           </Link>
           <Link 
+            to="/projects" 
+            style={{
+              ...styles.navLink,
+              ...(location.pathname === '/projects' ? styles.navLinkActive : {})
+            }}
+            className="nav-link"
+          >
+            Projects
+          </Link>
+          <Link 
             to="/contact" 
             style={{
               ...styles.navLink,
@@ -69,6 +80,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
+          <Route path="/projects" element={<Projects />} />
           <Route path="/contact" element={<Contact />} />
         </Routes>
       </main>

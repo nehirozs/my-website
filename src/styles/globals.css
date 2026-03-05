@@ -507,90 +507,18 @@
       gap: 1.5rem !important;
     }
     
-    /* About page - CRITICAL FIXES */
+    /* About page - two images side by side or stacked */
     .photo-section {
-      margin: 0 -1rem !important;
-      padding: 0 !important;
-      gap: 0 !important;
-      display: flex !important;
-      overflow-x: scroll !important;
-      scroll-snap-type: x mandatory !important;
-    }
-    
-    .photo-card {
-      min-width: 100vw !important;
-      width: 100vw !important;
-      flex-shrink: 0 !important;
-      border-radius: 0 !important;
-      scroll-snap-align: start !important;
+      grid-template-columns: 1fr !important;
+      gap: 1rem !important;
+      max-width: 100% !important;
+      padding: 0 0.5rem !important;
     }
     
     .photo-card img {
-      width: 100vw !important;
-      height: 350px !important;
+      height: 200px !important;
       object-fit: cover !important;
       object-position: center !important;
-    }
-    
-    /* Photo Pagination Dots - Mobile Only */
-    .photo-pagination {
-      display: flex !important;
-      justify-content: center !important;
-      align-items: center !important;
-      gap: 0.75rem !important;
-      margin-top: 1rem !important;
-      padding: 0.5rem 0 !important;
-    }
-    
-    .photo-dot {
-      width: 10px !important;
-      height: 10px !important;
-      border-radius: 50% !important;
-      border: none !important;
-      background: rgba(212, 179, 102, 0.4) !important;
-      cursor: pointer !important;
-      padding: 0 !important;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
-      min-width: 10px !important;
-      min-height: 10px !important;
-      outline: none !important;
-      opacity: 0.6;
-      transform: scale(1);
-    }
-    
-    .photo-dot:hover {
-      opacity: 0.8 !important;
-      transform: scale(1.1) !important;
-      background: rgba(212, 179, 102, 0.6) !important;
-    }
-    
-    .photo-dot-active {
-      background: var(--gold) !important;
-      width: 12px !important;
-      height: 12px !important;
-      box-shadow: 0 0 8px rgba(212, 179, 102, 0.6) !important;
-      min-width: 12px !important;
-      min-height: 12px !important;
-      opacity: 1 !important;
-      transform: scale(1.15) !important;
-      animation: dotPulse 2s ease-in-out infinite !important;
-    }
-    
-    .photo-dot:active {
-      transform: scale(0.95) !important;
-    }
-    
-    .photo-dot-active:active {
-      transform: scale(1.1) !important;
-    }
-    
-    @keyframes dotPulse {
-      0%, 100% {
-        box-shadow: 0 0 8px rgba(212, 179, 102, 0.6);
-      }
-      50% {
-        box-shadow: 0 0 12px rgba(212, 179, 102, 0.8);
-      }
     }
     
     /* Volunteer/Community section */
