@@ -100,6 +100,14 @@
     border-bottom: 1px solid rgba(212, 179, 102, 0.15);
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
   }
+  
+  /* Desktop: show direct links, hide menu tab */
+  .nav-links-desktop {
+    display: flex;
+  }
+  .nav-menu-mobile {
+    display: none;
+  }
 
   /* Education Card - Desktop Layout */
   .education-card-desktop {
@@ -422,11 +430,15 @@
       overflow-x: hidden;
     }
     
-    /* Navigation fixes */
+    /* Navigation: menu tab on phone, hide direct links */
+    .nav-links-desktop {
+      display: none !important;
+    }
+    .nav-menu-mobile {
+      display: block !important;
+    }
     nav {
-      padding: 1rem !important;
-      flex-wrap: wrap !important;
-      gap: 0.5rem !important;
+      padding: 0.75rem 1rem !important;
     }
     
     /* Text sizing */
@@ -661,6 +673,68 @@
   nav a.nav-link:hover::after,
   nav a.nav-link[style*="gold"]::after {
     width: 100%;
+  }
+  
+  /* Menu tab hover */
+  .menu-tab-btn:hover {
+    border-color: rgba(212, 179, 102, 0.35);
+    color: var(--text-main);
+    background: rgba(255, 255, 255, 0.06);
+  }
+  .menu-tab-btn:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 2px;
+  }
+  
+  /* Dropdown entrance */
+  .nav-dropdown {
+    animation: menuDropdownIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+  @keyframes menuDropdownIn {
+    from {
+      opacity: 0;
+      transform: translateY(-8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  .nav-dropdown-link {
+    animation: menuItemIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    opacity: 0;
+    transform: translateX(-6px);
+  }
+  @keyframes menuItemIn {
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .nav-dropdown,
+    .nav-dropdown-link {
+      animation: none;
+    }
+    .nav-dropdown-link {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  .nav-dropdown-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--gold);
+    flex-shrink: 0;
+  }
+  .nav-dropdown-link:hover {
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--text-main);
+    padding-left: 2rem;
+  }
+  .nav-dropdown-link-active:hover {
+    color: var(--gold);
   }
   
   @media (hover: hover) and (pointer: fine) {
