@@ -1,18 +1,21 @@
-import { useRef } from 'react'
+import { useState, useMemo } from 'react'
 import { useScrollAnimation } from '../hooks/useScrollAnimation'
+
+/** Partial view of the original coursework list: first N items + " …". */
+function partialCoursework(coursework, maxItems = 3) {
+  if (!coursework || typeof coursework !== 'string') return ''
+  const items = coursework.split(',').map(s => s.trim()).filter(Boolean)
+  if (items.length <= maxItems) return coursework
+  return items.slice(0, maxItems).join(', ') + ' …'
+}
 
 export default function EducationCard({ logo, schoolName, period, description, summary, coursework, degreeLine, index = 0 }) {
   const [cardRef, cardVisible] = useScrollAnimation({ 
     threshold: 0.1, 
     delay: index * 0.1 
-  });
-  const summaryRef = useRef(null);
-  
-  const handleToggle = (e) => {
-    if (summaryRef.current) {
-      summaryRef.current.textContent = e.target.open ? 'Show less' : 'Show more';
-    }
-  };
+  })
+  const [expanded, setExpanded] = useState(false)
+  const partial = useMemo(() => partialCoursework(coursework), [coursework])
   
   return (
     <div 
@@ -53,7 +56,41 @@ export default function EducationCard({ logo, schoolName, period, description, s
           </div>
         </div>
         <div className="edu-body">
-          {summary ? (
+          {coursework ? (
+            <>
+              {degreeLine && (
+                <>
+                  <p className="program-headline">{degreeLine}</p>
+                  <div className="section-divider"></div>
+                </>
+              )}
+              <div
+                role="button"
+                tabIndex={0}
+                className="coursework-block"
+                aria-expanded={expanded}
+                onClick={() => setExpanded((prev) => !prev)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault()
+                    setExpanded((prev) => !prev)
+                  }
+                  if (e.key === 'Escape') setExpanded(false)
+                }}
+              >
+                <span className="coursework-block-text program-description">
+                  {expanded ? coursework : partial}
+                </span>
+                <span
+                  className="coursework-arrow"
+                  aria-hidden
+                  style={{ transform: expanded ? 'rotate(90deg)' : 'rotate(0deg)' }}
+                >
+                  →
+                </span>
+              </div>
+            </>
+          ) : summary ? (
             <>
               {degreeLine && (
                 <>
@@ -62,15 +99,6 @@ export default function EducationCard({ logo, schoolName, period, description, s
                 </>
               )}
               <p className="edu-summary program-description">{summary}</p>
-              {coursework && (
-                <details 
-                  className="coursework-details"
-                  onToggle={handleToggle}
-                >
-                  <summary ref={summaryRef} className="coursework-summary">Show more</summary>
-                  <p className="coursework-content">{coursework}</p>
-                </details>
-              )}
             </>
           ) : (
             <p className="edu-description program-description">{description}</p>
