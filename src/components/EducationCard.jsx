@@ -83,12 +83,11 @@ export default function EducationCard({ logo, schoolName, period, description, s
 
 const styles = {
   card: {
-    padding: '2.5rem',
-    background: 'linear-gradient(135deg, rgba(35, 38, 45, 0.95) 0%, rgba(30, 33, 40, 0.9) 100%)',
-    borderRadius: '16px',
-    border: '1px solid rgba(212, 179, 102, 0.2)',
-    boxShadow: '0 4px 16px rgba(0, 0, 0, 0.25), 0 2px 8px rgba(0, 0, 0, 0.15)',
-    transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+    padding: 'var(--space-lg) var(--space-md)',
+    borderRadius: 8,
+    border: '1px solid rgba(255,255,255,0.08)',
+    background: 'rgba(255,255,255,0.02)',
+    transition: 'all 0.25s ease',
   },
   logoColumn: {
     width: '72px',
@@ -100,10 +99,10 @@ const styles = {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    borderRadius: '10px',
-    padding: '0',
+    borderRadius: 8,
+    padding: 0,
     background: 'transparent',
-    border: '1px solid rgba(212, 179, 102, 0.15)',
+    border: '1px solid rgba(255,255,255,0.08)',
     overflow: 'hidden',
   },
   logo: {

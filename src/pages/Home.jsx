@@ -56,7 +56,7 @@ export default function Home() {
   ];
 
   return (
-    <div style={styles.container}>
+    <div style={styles.root}>
       {/* Hero Section */}
       <section id="hero" style={styles.hero}>
         <div style={styles.heroContent}>
@@ -116,13 +116,13 @@ export default function Home() {
 
       {/* Experience Section */}
       <section id="experience" style={styles.experienceSection}>
-        <h2 
+        <h2
           ref={expTitleRef}
           style={{
             ...styles.sectionTitle,
             ...(expTitleVisible ? styles.animateVisible : styles.animateHidden)
           }}
-          className="section-title gold"
+          className="gold"
         >
           Experience
         </h2>
@@ -161,13 +161,13 @@ export default function Home() {
 
       {/* Skills Section */}
       <section id="skills" style={styles.skillsSection}>
-        <h2 
+        <h2
           ref={skillsTitleRef}
           style={{
             ...styles.sectionTitle,
             ...(skillsTitleVisible ? styles.animateVisible : styles.animateHidden)
           }}
-          className="section-title gold"
+          className="gold"
         >
           Technical Skills
         </h2>
@@ -210,13 +210,13 @@ export default function Home() {
 
       {/* Education Section */}
       <section id="education" style={styles.educationSection}>
-        <h2 
+        <h2
           ref={eduTitleRef}
           style={{
             ...styles.sectionTitle,
             ...(eduTitleVisible ? styles.animateVisible : styles.animateHidden)
           }}
-          className="section-title gold"
+          className="gold"
         >
           Education
         </h2>
@@ -244,50 +244,52 @@ export default function Home() {
 }
 
 const styles = {
-  container: {
-    paddingTop: '3rem',
-    paddingBottom: '5rem',
+  root: {
+    minHeight: '60vh',
+    color: 'var(--text-main)',
+    fontFamily: 'var(--font-body)',
+    paddingTop: 'var(--space-lg)',
+    paddingBottom: 'var(--space-xl)',
   },
-  
+
   // ===== HERO SECTION =====
   hero: {
     display: 'flex',
-    gap: '6rem',
+    gap: 'var(--space-xl)',
     alignItems: 'center',
-    padding: '8rem 0',
-    marginBottom: '2rem',
+    padding: 'var(--space-section) 0',
+    marginBottom: 'var(--space-lg)',
   },
   heroContent: {
-    maxWidth: '650px',
     flex: 1,
   },
   greeting: {
     color: 'var(--text-muted)',
-    fontSize: '0.95rem',
-    letterSpacing: '0.18em',
+    fontSize: '0.7rem',
+    letterSpacing: '0.2em',
     textTransform: 'uppercase',
-    fontWeight: 300,
     display: 'block',
-    marginBottom: '1.25rem',
-    opacity: 0.9,
+    marginBottom: 'var(--space-sm)',
   },
   name: {
-    marginBottom: '1.5rem',
-    filter: 'drop-shadow(0 8px 24px rgba(212, 179, 102, 0.7)) drop-shadow(0 4px 12px rgba(212, 179, 102, 0.5))',
+    fontFamily: 'var(--font-display)',
+    fontSize: 'clamp(2.25rem, 5vw, 3.5rem)',
+    fontWeight: 600,
+    lineHeight: 1.1,
+    marginBottom: 'var(--space-sm)',
   },
   subtitle: {
-    fontSize: '1.65rem',
+    fontSize: 'clamp(1.1rem, 2.5vw, 1.35rem)',
     fontWeight: 400,
-    marginBottom: '2.25rem',
+    marginBottom: 'var(--space-md)',
     fontFamily: 'var(--font-body)',
     color: 'var(--text-main)',
     letterSpacing: '-0.01em',
   },
   bio: {
-    fontSize: '1.1rem',
-    lineHeight: 1.7,
+    fontSize: '0.95rem',
+    lineHeight: 1.6,
     color: 'var(--text-muted)',
-    letterSpacing: '0.01em',
   },
   profileImageWrapper: {
     flex: '0 0 320px',
@@ -296,133 +298,133 @@ const styles = {
   profileImage: {
     width: '100%',
     height: 'auto',
-    borderRadius: '16px',
-    boxShadow: '0 8px 32px rgba(212, 179, 102, 0.3), 0 4px 16px rgba(212, 179, 102, 0.25), 0 0 40px rgba(212, 179, 102, 0.15)',
-    border: '2px solid rgba(212, 179, 102, 0.25)',
-    transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+    borderRadius: 8,
+    border: '1px solid rgba(255,255,255,0.08)',
+    transition: 'all 0.25s ease',
   },
   
   // EXPERIENCE SECTION
   experienceSection: {
-    padding: '8rem 0',
+    padding: 'var(--space-section) 0',
   },
   sectionTitle: {
-    marginBottom: '4rem',
+    fontFamily: 'var(--font-display)',
+    fontSize: 'clamp(1.4rem, 3vw, 1.75rem)',
+    fontWeight: 600,
+    marginBottom: 'var(--space-lg)',
+    color: 'var(--text-main)',
   },
   experienceGrid: {
     display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-    gap: '3rem',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+    gap: 'var(--space-md)',
   },
   experienceCard: {
-    padding: '3rem 2.5rem',
-    background: 'linear-gradient(135deg, rgba(35, 38, 45, 0.95) 0%, rgba(30, 33, 40, 0.9) 100%)',
-    borderRadius: '16px',
+    padding: 'var(--space-lg) var(--space-md)',
+    borderRadius: 8,
+    border: '1px solid rgba(255,255,255,0.08)',
+    background: 'rgba(255,255,255,0.02)',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
     textAlign: 'center',
-    transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+    transition: 'all 0.25s ease',
     cursor: 'pointer',
-    border: '1px solid rgba(212, 179, 102, 0.2)',
-    boxShadow: '0 6px 24px rgba(0, 0, 0, 0.3), 0 2px 8px rgba(0, 0, 0, 0.2)',
     position: 'relative',
     overflow: 'hidden',
     height: '100%',
   },
   expLogo: {
-    width: '150px',
-    height: '150px',
+    width: '120px',
+    height: '120px',
     objectFit: 'contain',
-    marginBottom: '1.5rem',
-    borderRadius: '12px',
-    padding: '0',
+    marginBottom: 'var(--space-sm)',
+    borderRadius: 8,
+    padding: 0,
     background: 'transparent',
-    border: '1px solid rgba(212, 179, 102, 0.15)',
-    transition: 'all 0.3s ease',
+    border: '1px solid rgba(255,255,255,0.08)',
+    transition: 'all 0.25s ease',
     overflow: 'hidden',
   },
   expRole: {
-    fontSize: '1.2rem',
-    marginBottom: '0.6rem',
+    fontFamily: 'var(--font-display)',
+    fontSize: 'clamp(1rem, 2vw, 1.2rem)',
+    marginBottom: 'var(--space-xs)',
     fontWeight: 600,
     color: 'var(--text-main)',
   },
   expCompany: {
-    fontSize: '1rem',
-    marginBottom: '0.6rem',
+    fontSize: '0.9rem',
+    marginBottom: 'var(--space-xs)',
     color: 'var(--text-muted)',
-    fontWeight: 500,
   },
   expPeriod: {
-    fontSize: '0.875rem',
+    fontSize: '0.85rem',
     color: 'var(--text-muted)',
     letterSpacing: '0.02em',
   },
   expPeriodRow: {
     display: 'flex',
     alignItems: 'center',
-    gap: '0.75rem',
+    gap: 'var(--space-sm)',
   },
   expCurrentBadge: {
-    padding: '0.35rem 0.85rem',
-    background: 'linear-gradient(135deg, rgba(212, 179, 102, 0.25) 0%, rgba(212, 179, 102, 0.2) 100%)',
-    borderRadius: '6px',
-    fontSize: '0.7rem',
+    padding: '0.3rem 0.75rem',
+    borderRadius: 4,
+    fontSize: '0.65rem',
     color: 'var(--gold)',
     fontWeight: 600,
     letterSpacing: '0.08em',
     textTransform: 'uppercase',
-    border: '1px solid rgba(212, 179, 102, 0.35)',
-    boxShadow: '0 2px 8px rgba(212, 179, 102, 0.25)',
+    border: '1px solid rgba(212, 179, 102, 0.3)',
+    background: 'rgba(212, 179, 102, 0.08)',
   },
   
-  //  SKILLS SECTION 
+  // SKILLS SECTION
   skillsSection: {
-    padding: '8rem 0',
+    padding: 'var(--space-section) 0',
   },
   skillsGrid: {
     display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fill, minmax(120px, 1fr))',
-    gap: '1.5rem',
+    gridTemplateColumns: 'repeat(auto-fill, minmax(110px, 1fr))',
+    gap: 'var(--space-sm)',
   },
   skillBox: {
-    padding: '2rem 1.25rem',
-    background: 'linear-gradient(135deg, rgba(35, 38, 45, 0.95) 0%, rgba(30, 33, 40, 0.9) 100%)',
-    borderRadius: '16px',
+    padding: 'var(--space-md) var(--space-sm)',
+    borderRadius: 8,
+    border: '1px solid rgba(255,255,255,0.08)',
+    background: 'rgba(255,255,255,0.02)',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    gap: '0.875rem',
-    transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+    gap: 'var(--space-sm)',
+    transition: 'all 0.25s ease',
     cursor: 'pointer',
-    border: '1px solid rgba(212, 179, 102, 0.2)',
-    boxShadow: '0 4px 12px rgba(0, 0, 0, 0.25), 0 2px 6px rgba(0, 0, 0, 0.15)',
     position: 'relative',
   },
   skillLogo: {
-    width: '64px',
-    height: '64px',
+    width: '56px',
+    height: '56px',
     objectFit: 'contain',
-    transition: 'transform 0.3s ease',
+    transition: 'transform 0.25s ease',
     filter: 'brightness(0.95)',
   },
   skillName: {
-    fontSize: '0.875rem',
+    fontSize: '0.85rem',
     fontWeight: 500,
     textAlign: 'center',
     letterSpacing: '0.02em',
     color: 'var(--text-main)',
   },
-  
+
   // EDUCATION SECTION
   educationSection: {
-    padding: '8rem 0',
+    padding: 'var(--space-section) 0',
   },
   educationList: {
     display: 'flex',
     flexDirection: 'column',
-    gap: '4rem',
+    gap: 'var(--space-lg)',
   },
   animateHidden: {
     opacity: 0,

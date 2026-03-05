@@ -116,7 +116,6 @@ export default function ProjectsPage() {
       <style>{css}</style>
 
       <header style={styles.header}>
-        <span style={styles.eyebrow}>Nehir Özsunar</span>
         <h1 style={styles.title} className="gold">
           Selected Work
         </h1>
@@ -350,14 +349,6 @@ const styles = {
     paddingTop: "var(--space-lg)",
     paddingBottom: "var(--space-md)",
   },
-  eyebrow: {
-    fontSize: "0.7rem",
-    letterSpacing: "0.2em",
-    color: "var(--text-muted)",
-    textTransform: "uppercase",
-    display: "block",
-    marginBottom: "0.5rem",
-  },
   title: {
     fontFamily: "var(--font-display)",
     fontSize: "clamp(2.25rem, 5vw, 3.5rem)",
@@ -369,7 +360,6 @@ const styles = {
     fontSize: "0.95rem",
     color: "var(--text-muted)",
     lineHeight: 1.6,
-    maxWidth: 420,
     marginBottom: "var(--space-md)",
   },
   filterRow: {
@@ -518,7 +508,7 @@ const styles = {
     borderRadius: 8,
     overflow: "hidden",
     border: "1px solid rgba(255,255,255,0.08)",
-    maxWidth: 720,
+    width: "100%",
   },
   detailImage: {
     width: "100%",
@@ -531,7 +521,6 @@ const styles = {
     color: "var(--text-muted)",
     lineHeight: 1.75,
     marginBottom: "1.5rem",
-    maxWidth: 620,
   },
   detailHighlights: {
     listStyle: "none",
