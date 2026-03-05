@@ -36,10 +36,10 @@ export default function Home() {
       logo: mcgillLogo,
       schoolName: 'McGill University',
       period: 'August 2023 - April 2027',
-      description: 'Relevant coursework includes Algorithm Design, Algorithms and Data Structures, Programming Challenges, Programming Languages & Paradigms, Computer Systems, Circuit Design, Introduction to Digital Audio, Economics Statistics, Microeconomics, Macroeconomics',
+      description: 'Relevant coursework includes Algorithm Design, Algorithms and Data Structures, Programming Challenges, Software Design, Database Systems, Data Science, Programming Languages & Paradigms, Computer Systems, Circuit Design, Introduction to Digital Audio, Economics Statistics, Microeconomics, Macroeconomics',
       summary: 'Currently in third year • Relevant coursework: Algorithms, Data Structures, Systems, Digital Audio, Micro/Macroeconomics…',
       degreeLine: 'BSc in Computer Science (AI Concentration) — Minor in Economics',
-      coursework: 'Algorithm Design, Algorithms & Data Structures, Programming Challenges, Programming Languages & Paradigms, Computer Systems, Circuit Design, Introduction to Digital Audio, Economics Statistics, Microeconomics, Macroeconomics'
+      coursework: 'Algorithm Design, Algorithms & Data Structures, Programming Challenges, Software Design, Database Systems, Data Science, Programming Languages & Paradigms, Computer Systems, Circuit Design, Introduction to Digital Audio, Economics Statistics, Microeconomics, Macroeconomics'
     },
     {
       logo: robertCollegeLogo,
