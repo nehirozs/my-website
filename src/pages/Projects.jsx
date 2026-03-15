@@ -395,6 +395,19 @@ const css = `
     .project-row .row-year { display: none !important; }
   }
 
+  .filter-row-mobile {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    text-align: left;
+  }
+  .filter-row-mobile button {
+    width: auto !important;
+    display: inline-flex !important;
+    align-items: center;
+    flex-shrink: 0;
+  }
+
   @media (max-width: 768px) {
     .filter-row-mobile button {
       font-size: 0.65rem;
