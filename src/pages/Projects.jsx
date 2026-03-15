@@ -1,16 +1,38 @@
 import { useState, useMemo, useEffect } from "react";
-import healthHubImage from "../assets/health_hub.png";
+import healthHubImage1 from "../assets/health_hub1.png";
+import healthHubImage2 from "../assets/health_hub2.png";
 import mptRiskAnalysisImage from "../assets/mpt_risk_analysis.png";
+import antonioImage1 from "../assets/antonio1.png";
+import antonioImage2 from "../assets/antonio2.png";
 
 const projects = [
   {
     id: "01",
+    title: "Antonio",
+    subtitle: "A voice-first AI assistant that I've built for my own car — and being developed into something anyone can make their own.",
+    tags: ["Next.js", "TypeScript", "Voice", "LLM", "Maps", "Spotify"],
+    category: "Personal · AI",
+    year: "2026",
+    description:
+      "Antonio started as a personal AI copilot for my Mini Cooper S — a voice-activated mobile web app tuned to my preferences, with multiple personality modes, persistent conversation history, and Spotify integration. I'm currently expanding it into a fully customizable platform so any driver can configure their own assistant. Built with Next.js and TypeScript, the app integrates a real-time voice pipeline with an LLM backend, a REST API for conversation and user preference persistence, and a responsive frontend optimized for iPhone Safari.",
+    highlights: [
+      "Voice-activated mobile web app with real-time voice pipeline",
+      "Multiple personality modes and persistent conversation history",
+      "Spotify integration and REST API for preferences",
+      "Responsive frontend optimized for iPhone Safari",
+    ],
+    link: "https://github.com/nehirozs/antonio.ai",
+    images: [antonioImage2, antonioImage1],
+    color: "#e07c4c",
+  },
+  {
+    id: "02",
     title: "health_hub-frontend",
     subtitle: "AI Health Kiosk Interface",
     tags: ["TypeScript", "React Three Fiber", "3D Visualization"],
     category: "Internship · 3age",
     year: "2026",
-    image: healthHubImage,
+    images: [healthHubImage1, healthHubImage2],
     description:
       "A patient-facing health kiosk interface I have designed and built during my internship at Sabancı University Inovent. Features an interactive 3D Vitruvian figure for anatomical input, patient flow visualization, and a modular component system designed for real clinical environments.",
     highlights: [
@@ -22,7 +44,7 @@ const projects = [
     color: "var(--gold)",
   },
   {
-    id: "02",
+    id: "03",
     title: "MPT-Risk-Analysis",
     subtitle: "Portfolio Optimization Engine",
     tags: ["Python", "Jupyter", "Finance", "Monte Carlo"],
@@ -40,7 +62,7 @@ const projects = [
     color: "#7eb8c8",
   },
   {
-    id: "03",
+    id: "04",
     title: "Language-Data-Science",
     subtitle: "NLP & Linguistic Analysis",
     tags: ["Python", "NLP", "Jupyter", "Data Science"],
@@ -57,7 +79,7 @@ const projects = [
     color: "#7ec8a0",
   },
   {
-    id: "04",
+    id: "05",
     title: "mini-os",
     subtitle: "Simulated Operating System",
     tags: ["C", "Systems", "OS Design"],
@@ -77,6 +99,7 @@ const projects = [
 
 const tagColors = {
   TypeScript: "#3178c6",
+  "Next.js": "#111",
   Python: "#f7c948",
   C: "#888",
   Jupyter: "#f37626",
@@ -88,6 +111,10 @@ const tagColors = {
   "Data Science": "#7ec8a0",
   Systems: "#a97ec8",
   "OS Design": "#a97ec8",
+  Voice: "#e07c4c",
+  LLM: "#e07c4c",
+  Maps: "#4285f4",
+  Spotify: "#1db954",
 };
 
 const categories = ["All", ...new Set(projects.map((p) => p.category.split(" · ")[0]))];
@@ -229,6 +256,22 @@ export default function ProjectsPage() {
                         <h3 style={styles.detailTitle}>{p.title}</h3>
                         <p style={styles.detailSubtitle}>{p.subtitle}</p>
                       </div>
+                      <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
+                      {p.website && (
+                        <a
+                          href={p.website}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          style={{
+                            ...styles.detailLink,
+                            borderColor: p.color,
+                            color: p.color,
+                          }}
+                          className="detail-link-btn"
+                        >
+                          Visit site ↗
+                        </a>
+                      )}
                       <a
                         href={p.link}
                         target="_blank"
@@ -243,14 +286,29 @@ export default function ProjectsPage() {
                         View on GitHub ↗
                       </a>
                     </div>
+                    </div>
 
-                    {p.image && (
-                      <div style={styles.detailImageWrap}>
-                        <img
-                          src={p.image}
-                          alt={`${p.title} interface screenshot`}
-                          style={styles.detailImage}
-                        />
+                    {(p.images?.length > 0 || p.image) && (
+                      <div style={{ display: "flex", flexDirection: "column", gap: "1rem", marginBottom: "1.5rem" }}>
+                        {p.images ? (
+                          p.images.map((img, i) => (
+                            <div key={i} style={styles.detailImageWrap}>
+                              <img
+                                src={img}
+                                alt={`${p.title} screenshot ${i + 1}`}
+                                style={styles.detailImage}
+                              />
+                            </div>
+                          ))
+                        ) : (
+                          <div style={styles.detailImageWrap}>
+                            <img
+                              src={p.image}
+                              alt={`${p.title} interface screenshot`}
+                              style={styles.detailImage}
+                            />
+                          </div>
+                        )}
                       </div>
                     )}
 
