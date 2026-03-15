@@ -21,7 +21,7 @@ const projects = [
       "Spotify integration and REST API for preferences",
       "Responsive frontend optimized for iPhone Safari",
     ],
-    link: "https://github.com/nehirozs/antonio",
+    link: "https://github.com/nehirozs/antonio.ai",
     images: [antonioImage2, antonioImage1],
     color: "#e07c4c",
   },
