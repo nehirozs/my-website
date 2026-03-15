@@ -150,7 +150,7 @@ export default function ProjectsPage() {
           A selection of my projects spanning systems, finance, health tech, and language.
         </p>
 
-        <div className="filter-row-mobile" style={styles.filterRow}>
+        <div style={styles.filterRow}>
           {categories.map((cat) => (
             <button
               key={cat}
@@ -393,27 +393,6 @@ const css = `
     }
     .project-row .row-tags,
     .project-row .row-year { display: none !important; }
-  }
-
-  .filter-row-mobile {
-    display: flex !important;
-    flex-direction: row !important;
-    flex-wrap: wrap !important;
-    text-align: left;
-  }
-  .filter-row-mobile button {
-    width: auto !important;
-    display: inline-flex !important;
-    align-items: center;
-    flex-shrink: 0;
-  }
-
-  @media (max-width: 768px) {
-    .filter-row-mobile button {
-      font-size: 0.65rem;
-      padding: 0.3rem 0.55rem;
-      letter-spacing: 0.05em;
-    }
   }
 `;
 
