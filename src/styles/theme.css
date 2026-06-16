@@ -16,6 +16,7 @@
   --font-body: 'Inter', sans-serif;
   
   /* Spacing */
+  --page-gutter: clamp(1rem, 5vw, 4rem);
   --space-section: 8rem;
   --space-xl: 4rem;
   --space-lg: 2.5rem;

@@ -425,9 +425,16 @@
       opacity: 0.9 !important;
     }
     
-    /* Remove side padding on container */
     body {
       overflow-x: hidden;
+    }
+
+    /* Single gutter from main — avoid stacking horizontal padding on sections */
+    section {
+      padding-top: 3rem !important;
+      padding-bottom: 3rem !important;
+      padding-left: 0 !important;
+      padding-right: 0 !important;
     }
     
     /* Navigation: menu tab on phone, hide direct links */
@@ -438,7 +445,7 @@
       display: block !important;
     }
     nav {
-      padding: 0.75rem 1rem !important;
+      padding: 0.75rem var(--page-gutter) !important;
     }
     
     /* Text sizing */
@@ -458,7 +465,7 @@
     #hero {
       flex-direction: column !important;
       text-align: center !important;
-      padding: 2rem 1rem !important;
+      padding: 2rem 0 !important;
     }
     
     #hero > div:first-child {
@@ -472,11 +479,6 @@
     #hero img {
       max-width: 250px !important;
       margin: 0 auto 2rem auto !important;
-    }
-    
-    /* Section spacing */
-    section {
-      padding: 3rem 1rem !important;
     }
     
     section::after {
@@ -494,7 +496,7 @@
       grid-template-columns: 1fr !important;
       gap: 1rem !important;
       max-width: 100% !important;
-      padding: 0 0.5rem !important;
+      padding: 0 !important;
     }
     
     .photo-card img {
@@ -537,7 +539,7 @@
     
     /* Mobile footer */
     footer {
-      padding: 3rem 1.5rem 2.5rem !important;
+      padding: 3rem var(--page-gutter) 2.5rem !important;
     }
     
     footer > div {
@@ -919,6 +921,7 @@
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   }
 
+  @media (max-width: 768px) {
     #experience > div {
       grid-template-columns: 1fr !important;
       gap: 0.75rem !important;
@@ -1020,4 +1023,4 @@
       font-size: 0.65rem !important;
       padding: 0.25rem 0.5rem !important;
     }
-  
+  }
