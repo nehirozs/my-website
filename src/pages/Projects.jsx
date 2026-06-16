@@ -1,28 +1,35 @@
+import ProjectImageCarousel from "../components/ProjectImageCarousel";
 import { useState, useMemo, useEffect } from "react";
 import healthHubImage1 from "../assets/health_hub1.png";
 import healthHubImage2 from "../assets/health_hub2.png";
 import mptRiskAnalysisImage from "../assets/mpt_risk_analysis.png";
-import antonioImage1 from "../assets/antonio1.png";
-import antonioImage2 from "../assets/antonio2.png";
+import antonioHome from "../assets/antonio-home.png";
+import antonioMe from "../assets/antonio-me.png";
+import antonioModes from "../assets/antonio-modes.png";
+import antonioParking from "../assets/antonio-parking.png";
+import antonioMap from "../assets/antonio-map.png";
 
 const projects = [
   {
     id: "01",
     title: "Antonio",
-    subtitle: "A voice-first AI assistant that I've built for my own car — and being developed into something anyone can make their own.",
-    tags: ["Next.js", "TypeScript", "Voice", "LLM", "Maps", "Spotify"],
+    subtitle:
+      "Your car's new personality — a mobile-first AI voice assistant",
+    tags: ["Next.js", "Capacitor", "OpenAI", "Voice", "TypeScript", "Supabase", "Maps", "Spotify"],
     category: "Personal · AI",
     year: "2026",
     description:
-      "Antonio started as a personal AI copilot for my Mini Cooper S — a voice-activated mobile web app tuned to my preferences, with multiple personality modes, persistent conversation history, and Spotify integration. I'm currently expanding it into a fully customizable platform so any driver can configure their own assistant. Built with Next.js and TypeScript, the app integrates a real-time voice pipeline with an LLM backend, a REST API for conversation and user preference persistence, and a responsive frontend optimized for iPhone Safari.",
+      "Antonio started as a personal assistant for my Mini Cooper S and grew into a hands-free voice copilot for drivers, with customizable personalities built for life on the road.",
     highlights: [
-      "Voice-activated mobile web app with real-time voice pipeline",
-      "Multiple personality modes and persistent conversation history",
-      "Spotify integration and REST API for preferences",
-      "Responsive frontend optimized for iPhone Safari",
+      "Hands-free voice control with optional \"Antonio\" wake word",
+      "AI intent parsing for notes, lists, reminders, parking, trips, maintenance",
+      "Spotify + Apple Music playback by voice (iOS native MusicKit)",
+      "Voice navigation, weather, calendar, and contact lookup/calling",
+      "Parking memory with map and photos",
+      "Customizable personalities (Jarvis, Princess, Classic, Asko, etc.)",
     ],
-    link: "https://github.com/nehirozs/antonio.ai",
-    images: [antonioImage2, antonioImage1],
+    website: "https://myantonio.app",
+    images: [antonioHome, antonioMe, antonioModes, antonioParking, antonioMap],
     color: "#e07c4c",
   },
   {
@@ -113,6 +120,9 @@ const tagColors = {
   "OS Design": "#a97ec8",
   Voice: "#e07c4c",
   LLM: "#e07c4c",
+  Capacitor: "#119eff",
+  OpenAI: "#10a37f",
+  Supabase: "#3ecf8e",
   Maps: "#4285f4",
   Spotify: "#1db954",
 };
@@ -272,45 +282,45 @@ export default function ProjectsPage() {
                           Visit site ↗
                         </a>
                       )}
-                      <a
-                        href={p.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        style={{
-                          ...styles.detailLink,
-                          borderColor: p.color,
-                          color: p.color,
-                        }}
-                        className="detail-link-btn"
-                      >
-                        View on GitHub ↗
-                      </a>
+                      {p.link && (
+                        <a
+                          href={p.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          style={{
+                            ...styles.detailLink,
+                            borderColor: p.color,
+                            color: p.color,
+                          }}
+                          className="detail-link-btn"
+                        >
+                          View on GitHub ↗
+                        </a>
+                      )}
                     </div>
                     </div>
 
-                    {(p.images?.length > 0 || p.image) && (
-                      <div style={{ display: "flex", flexDirection: "column", gap: "1rem", marginBottom: "1.5rem" }}>
-                        {p.images ? (
-                          p.images.map((img, i) => (
-                            <div key={i} style={styles.detailImageWrap}>
-                              <img
-                                src={img}
-                                alt={`${p.title} screenshot ${i + 1}`}
-                                style={styles.detailImage}
-                              />
-                            </div>
-                          ))
-                        ) : (
+                    {(p.images?.length > 0 || p.image) &&
+                      (p.images?.length > 1 ? (
+                        <ProjectImageCarousel
+                          key={p.id}
+                          images={p.images}
+                          title={p.title}
+                          accentColor={p.color}
+                        />
+                      ) : (
+                        <div style={{ marginBottom: "1.5rem" }}>
                           <div style={styles.detailImageWrap}>
                             <img
-                              src={p.image}
+                              src={p.images?.[0] ?? p.image}
                               alt={`${p.title} interface screenshot`}
                               style={styles.detailImage}
+                              loading="lazy"
+                              decoding="async"
                             />
                           </div>
-                        )}
-                      </div>
-                    )}
+                        </div>
+                      ))}
 
                     <p style={styles.detailDesc}>{p.description}</p>
 
