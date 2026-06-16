@@ -27,6 +27,7 @@ const projects = [
     ],
     website: "https://myantonio.app",
     images: antonioScreenshots,
+    carousel: true,
     color: "#e07c4c",
   },
   {
@@ -302,7 +303,7 @@ export default function ProjectsPage() {
                     </div>
 
                     {(p.images?.length > 0 || p.image) &&
-                      (p.images?.length > 1 ? (
+                      (p.carousel && p.images?.length > 1 ? (
                         <ProjectImageCarousel
                           key={p.id}
                           images={p.images}
@@ -310,16 +311,18 @@ export default function ProjectsPage() {
                           accentColor={p.color}
                         />
                       ) : (
-                        <div style={{ marginBottom: "1.5rem" }}>
-                          <div style={styles.detailImageWrap}>
-                            <img
-                              src={p.images?.[0] ?? p.image}
-                              alt={`${p.title} interface screenshot`}
-                              style={styles.detailImage}
-                              loading="lazy"
-                              decoding="async"
-                            />
-                          </div>
+                        <div style={{ display: "flex", flexDirection: "column", gap: "1rem", marginBottom: "1.5rem" }}>
+                          {(p.images ?? [p.image]).map((img, i) => (
+                            <div key={i} style={styles.detailImageWrap}>
+                              <img
+                                src={img}
+                                alt={`${p.title} screenshot ${i + 1}`}
+                                style={styles.detailImage}
+                                loading="lazy"
+                                decoding="async"
+                              />
+                            </div>
+                          ))}
                         </div>
                       ))}
 
