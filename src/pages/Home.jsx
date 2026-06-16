@@ -20,6 +20,9 @@ import robertCollegeLogo from '../assets/robert.png'
 import ScrollConstellation from '../components/ScrollConstellation'
 import EducationCard from '../components/EducationCard'
 import { useScrollAnimation } from '../hooks/useScrollAnimation'
+import { antonioScreenshots } from '../data/antonioScreenshots'
+import { preloadImages } from '../utils/preloadImages'
+import { useEffect } from 'react'
 
 
 export default function Home() {
@@ -54,6 +57,16 @@ export default function Home() {
       description: 'Conservatory program, part time enrollment during high school'
     }
   ];
+
+  useEffect(() => {
+    const run = () => preloadImages(antonioScreenshots);
+    if ('requestIdleCallback' in window) {
+      const id = requestIdleCallback(run);
+      return () => cancelIdleCallback(id);
+    }
+    const timer = setTimeout(run, 300);
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <div style={styles.root}>

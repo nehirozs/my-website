@@ -3,11 +3,8 @@ import { useState, useMemo, useEffect } from "react";
 import healthHubImage1 from "../assets/health_hub1.png";
 import healthHubImage2 from "../assets/health_hub2.png";
 import mptRiskAnalysisImage from "../assets/mpt_risk_analysis.png";
-import antonioHome from "../assets/antonio-home.png";
-import antonioMe from "../assets/antonio-me.png";
-import antonioModes from "../assets/antonio-modes.png";
-import antonioParking from "../assets/antonio-parking.png";
-import antonioMap from "../assets/antonio-map.png";
+import { antonioScreenshots } from "../data/antonioScreenshots";
+import { preloadImages } from "../utils/preloadImages";
 
 const projects = [
   {
@@ -29,7 +26,7 @@ const projects = [
       "Customizable personalities (Jarvis, Princess, Classic, Asko, etc.)",
     ],
     website: "https://myantonio.app",
-    images: [antonioHome, antonioMe, antonioModes, antonioParking, antonioMap],
+    images: antonioScreenshots,
     color: "#e07c4c",
   },
   {
@@ -146,6 +143,10 @@ export default function ProjectsPage() {
       setActive(null);
     }
   }, [filter, active, selected, filtered]);
+
+  useEffect(() => {
+    preloadImages(antonioScreenshots);
+  }, []);
 
 
   return (

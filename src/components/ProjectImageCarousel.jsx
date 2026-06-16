@@ -1,4 +1,5 @@
 import { useState, useRef, useCallback, useEffect } from "react";
+import { preloadImages } from "../utils/preloadImages";
 
 const SWIPE_THRESHOLD = 40;
 
@@ -11,6 +12,10 @@ export default function ProjectImageCarousel({ images, title, accentColor = "var
   useEffect(() => {
     setActiveIndex(0);
     setRotationOffset(0);
+  }, [images]);
+
+  useEffect(() => {
+    preloadImages(images);
   }, [images]);
 
   useEffect(() => {
@@ -80,7 +85,6 @@ export default function ProjectImageCarousel({ images, title, accentColor = "var
           src={images[activeIndex]}
           alt={`${title} screenshot ${activeIndex + 1}`}
           style={styles.fallbackImage}
-          loading="lazy"
           decoding="async"
         />
         <div style={styles.controls}>
@@ -135,7 +139,6 @@ export default function ProjectImageCarousel({ images, title, accentColor = "var
                   src={img}
                   alt={`${title} screenshot ${i + 1}`}
                   style={styles.image}
-                  loading={i === activeIndex ? "eager" : "lazy"}
                   decoding="async"
                   draggable={false}
                 />
